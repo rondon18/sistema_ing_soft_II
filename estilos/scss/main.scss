@@ -1,0 +1,9 @@
+// Hoja de estilos base para importación modular
+
+@import 'colores.scss';
+
+html, body {
+	background: $oxford-blue;
+	padding: 0;
+	margin: 0;
+}
