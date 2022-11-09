@@ -50,7 +50,7 @@ $lista_ob = $ob->mostrar();
 										<th>Profesión</th>
 										<th>Tipo de cargo</th>
 										<th>Horas</th>
-										<th colspan="3">Acciones</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -70,8 +70,6 @@ $lista_ob = $ob->mostrar();
 												<button type="submit">Consultar</button>
 											</form>
 										</td>
-										<td><a href="#">Editar</a></td>
-										<td><a href="#">Eliminar</a></td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>

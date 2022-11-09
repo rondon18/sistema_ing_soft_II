@@ -42,6 +42,31 @@ class Docente extends Empleado {
 		desconectar($conexion);
 	}
 
+	public function editarDocente() {
+
+		$this->editarPersona();
+		$this->editarEmpleado();
+
+		$conexion = conectar();
+
+		$Hrs_Academicas = $this->getHrs_Academicas();
+		$Area = $this->getArea();
+		$id_Empleado = $this->getid_Empleado();
+
+		$sql = "
+			UPDATE 
+				`docentes` 
+			SET 
+				`Hrs_Academicas`='$Hrs_Academicas',
+				`Area`='$Area'
+			WHERE 
+				`id_Empleado`='$id_Empleado' 
+		";
+		
+		$conexion->query($sql) or die("error: ".$conexion->error);
+		desconectar($conexion);
+	}
+
 	public function mostrar(){
 		$conexion = conectar();
 
@@ -88,6 +113,7 @@ class Docente extends Empleado {
 
 		return $resultado;
 	}
+
 	public function getid_Docente() {
 		return $this->id_Docente;
 	}

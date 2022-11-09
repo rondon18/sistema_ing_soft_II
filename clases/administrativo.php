@@ -34,6 +34,27 @@ class Administrativo extends Empleado {
 		desconectar($conexion);
 	}
 
+	public function editarAdministrativo() {
+
+		$this->editarPersona();
+		$this->editarEmpleado();
+
+		$conexion = conectar();
+		// Aún no hay campos exclusivos de administrativos
+		// $sql = "
+		// 	UPDATE 
+		// 		`docentes` 
+		// 	SET 
+		// 		`Hrs_Academicas`='$Hrs_Academicas',
+		// 		`Area`='$Area'
+		// 	WHERE 
+		// 		`id_Empleado`='$id_Empleado' 
+		// ";
+		
+		// $conexion->query($sql) or die("error: ".$conexion->error);
+		desconectar($conexion);
+	}
+
 	public function mostrar(){
 		$conexion = conectar();
 

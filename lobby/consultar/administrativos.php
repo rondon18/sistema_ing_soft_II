@@ -46,7 +46,7 @@ $lista_adm = $adm->mostrar();
 										<th>Fecha de nacimiento</th>
 										<th>Profesión</th>
 										<th>Tipo de cargo</th>
-										<th colspan="3">Acciones</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -58,9 +58,13 @@ $lista_adm = $adm->mostrar();
 										<td><?php echo $Administrativo['Fecha_Nac']; ?></td>
 										<td><?php echo $Administrativo['Profesion']; ?></td>
 										<td><?php echo $Administrativo['Tipo_Cargo']; ?></td>
-										<td><a href="#">Consultar</a></td>
-										<td><a href="#">Editar</a></td>
-										<td><a href="#">Eliminar</a></td>
+										<td>
+											<form action="consultar-empleado.php" method="post">
+												<input type="hidden" name="id_Persona" value="<?php echo $Administrativo['id_Persona']; ?>">
+												<input type="hidden" name="tipo_empleado" value="3">
+												<button type="submit">Consultar</button>
+											</form>
+										</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>

@@ -37,6 +37,61 @@ class Telefono {
 		desconectar($conexion);
 	}
 
+	public function editarTelefono($Prefijo,$Numero,$Relacion,$id_Contacto) {
+		$conexion = conectar();
+
+		$sql = "
+			UPDATE 
+				`telefonos` 
+			SET 
+				`Prefijo`='$Prefijo',
+				`Numero`='$Numero'
+			WHERE 
+				`Relacion`='$Relacion'
+			AND
+				`id_Contacto`='$id_Contacto' 
+		";
+		
+		$conexion->query($sql) or die("error: ".$conexion->error);
+		desconectar($conexion);
+	}
+
+	public function consultar($id_Contacto) {
+		$conexion = conectar();
+
+		$sql = "SELECT * FROM `telefonos` WHERE `id_Contacto` = '$id_Contacto';";
+
+		$fetch = $conexion->query($sql);
+
+		$resultados = $fetch->fetch_all(MYSQLI_ASSOC);
+
+		$telefonos = [];
+		foreach ($resultados as $telefono) {
+			$telefonos[] = $telefono;
+		}
+
+		desconectar($conexion);
+		
+		return $telefonos;
+	}
+
+	public function tipoTelefono($telefono) {
+		if ($telefono['Relacion'] == "P") {
+			$tipoTelefono = "Principal";
+		}
+		elseif ($telefono['Relacion'] == "S") {
+			$tipoTelefono = "Secundario";
+		}
+		elseif ($telefono['Relacion'] == "A") {
+			$tipoTelefono = "Auxiliar";
+		}
+		else {
+			$tipoTelefono = "Desconocido";
+		}
+		return $tipoTelefono;
+	}
+
+
 	public function telefonoCompleto(){
 		return $this->Prefijo.$this->Numero;
 	}

@@ -63,6 +63,20 @@ class Contacto {
 		desconectar($conexion);
 	}
 
+	public function consultar($id_Personas) {
+		$conexion = conectar();
+
+		$sql = "SELECT * FROM `contactos` WHERE `id_Personas` = '$id_Personas';";
+
+		$fetch = $conexion->query($sql);
+
+		$resultado = $fetch->fetch_assoc();
+
+		desconectar($conexion);
+		
+		return $resultado;
+	}
+
 	// Getters
 	public function getid_Contacto() {
 		return $this->id_Contacto;

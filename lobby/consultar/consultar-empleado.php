@@ -1,6 +1,8 @@
 <?php 
 
 require('../../controladores/conexion.php');
+require('../../clases/contacto.php');
+require('../../clases/telefono.php');
 
 if ($_POST['tipo_empleado'] == 1) {
 	include('../../clases/obrero.php');
@@ -18,7 +20,11 @@ elseif ($_POST['tipo_empleado'] == 3) {
 	$empleado = $emp->consultar($_POST['id_Persona']);
 }
 
-// print_r($empleado);
+$con = new Contacto();
+$contacto = $con->consultar($_POST['id_Persona']);
+
+$tel = new Telefono();
+$telefonos = $tel->consultar($contacto['id_Contacto']);
 
 ?>
 
@@ -101,6 +107,32 @@ elseif ($_POST['tipo_empleado'] == 3) {
 								</tr>
 								
 								<tr>
+									<td>id_Contacto</td>
+									<td colspan="4"><?php echo $contacto['id_Contacto']; ?></td>
+								</tr>	
+
+								<tr>
+									<td>Correo</td>
+									<td colspan="4"><?php echo $contacto['Correo']; ?></td>
+								</tr>
+
+								<tr>
+									<td>Direccion</td>
+									<td colspan="4"><?php echo $contacto['Direccion']; ?></td>
+								</tr>
+								
+								<?php foreach ($telefonos as $telefono): ?>
+								<tr>
+									<td><?php echo $tel->tipoTelefono($telefono); ?></td>
+									<td colspan="4">
+										<?php echo $telefono['Prefijo']."-".$telefono['Numero']; ?>
+									</td>
+								</tr>
+								<?php endforeach ?>
+
+
+
+								<tr>
 									<th colspan="5">Información de empleado</th>
 								</tr>
 
@@ -169,8 +201,22 @@ elseif ($_POST['tipo_empleado'] == 3) {
 								</tr>
 
 								<tr>
-									<td>Editar</td>
-									<td>Eliminar</td>
+									<td>
+										<form action="../editar/paso-1.php" method="post">
+											<input type="hidden" name="id_Persona" value="<?php echo $empleado['id_Persona']; ?>">
+											<input type="hidden" name="tipo_empleado" value="<?php echo $_POST['tipo_empleado']; ?>">
+											<button type="submit">Editar</button>
+										</form>
+									</td>
+									<td>
+										<form action="../../controladores/control-empleados.php" method="post">
+											<input type="hidden" name="id_Persona" value="<?php echo $empleado['id_Persona']; ?>">
+											<input type="hidden" name="eliminar" value="eliminar">
+											<input type="hidden" name="orden" value="eliminar">
+
+											<button type="submit">Eliminar</button>
+										</form>
+									</td>
 									<td></td>
 								</tr>
 							</table>

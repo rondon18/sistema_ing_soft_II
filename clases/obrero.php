@@ -39,11 +39,35 @@ class Obrero extends Empleado {
 		desconectar($conexion);
 	}
 
+	public function editarObrero() {
+
+		$this->editarPersona();
+		$this->editarEmpleado();
+
+		$conexion = conectar();
+
+		$Horas = $this->getHoras();
+		$id_Empleado = $this->getid_Empleado();
+
+		$sql = "
+			UPDATE 
+				`obreros` 
+			SET 
+				`Horas`='$Horas'			
+			WHERE 
+				`id_Empleado`='$id_Empleado' 
+		";
+		
+		$conexion->query($sql) or die("error: ".$conexion->error);
+		desconectar($conexion);
+	}
+
 	public function mostrar(){
 		$conexion = conectar();
 
 		$sql = "
-		SELECT * FROM `personas`,`empleados`,`obreros` 
+		SELECT * FROM `personas`,
+		`empleados`,`obreros` 
 		WHERE 
 			`personas`.`id_Persona` = `empleados`.`id_Personas` 
 		AND

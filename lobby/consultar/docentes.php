@@ -51,7 +51,7 @@ $lista_doc = $doc->mostrar();
 										<th>Tipo de cargo</th>
 										<th>Horas académicas</th>
 										<th>Área</th>
-										<th colspan="3">Acciones</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -65,9 +65,13 @@ $lista_doc = $doc->mostrar();
 										<td><?php echo $Docente['Tipo_Cargo']; ?></td>
 										<td><?php echo $Docente['Hrs_Academicas']; ?></td>
 										<td><?php echo $Docente['Area']; ?></td>
-										<td><a href="#">Consultar</a></td>
-										<td><a href="#">Editar</a></td>
-										<td><a href="#">Eliminar</a></td>
+										<td>
+											<form action="consultar-empleado.php" method="post">
+												<input type="hidden" name="id_Persona" value="<?php echo $Docente['id_Persona']; ?>">
+												<input type="hidden" name="tipo_empleado" value="2">
+												<button type="submit">Consultar</button>
+											</form>
+										</td>
 									</tr>
 									<?php endforeach ?>
 								</tbody>

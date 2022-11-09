@@ -57,9 +57,9 @@ class Empleado extends Persona {
 			SET 
 				`Profesion`='$Profesion',
 				`Tipo_Cargo`='$Tipo_Cargo',
-				`Tiempo_Nomina`='$Tiempo_Nomina',
+				`Tiempo_Nomina`='$Tiempo_Nomina'	
 			WHERE 
-				`id_Personas`='$id_Personas' 
+				`id_Personas`='$id_Personas';
 		";
 
 		$conexion->query($sql) or die("error: ".$conexion->error);

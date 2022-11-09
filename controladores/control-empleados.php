@@ -69,7 +69,19 @@ function subirImagen($cedula) {
 }
 
 
-if (isset($_POST['paso-2'],$_POST['orden']) and !empty($_POST['orden'])) {
+if 
+(
+	(
+		isset($_POST['paso-1'],$_POST['orden']) 
+		or 
+		isset($_POST['editar'],$_POST['orden'])
+		or 
+		isset($_POST['eliminar'],$_POST['orden'])
+	) 
+	and 
+	!empty($_POST['orden'])
+) 
+{
 	// ORDENES PARA INSERTAR
 	if ($_POST['orden'] == 'insertar') {
 		switch ($_POST['T_empleado']) {
@@ -203,9 +215,9 @@ if (isset($_POST['paso-2'],$_POST['orden']) and !empty($_POST['orden'])) {
 				$emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+				// // Foto
+				// $foto = subirImagen($_POST['cedula']);
+				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
 				$emp->setProfesion($_POST['profesion']);
@@ -230,9 +242,9 @@ if (isset($_POST['paso-2'],$_POST['orden']) and !empty($_POST['orden'])) {
 				$emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+				// // Foto
+				// $foto = subirImagen($_POST['cedula']);
+				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
 				$emp->setProfesion($_POST['profesion']);
@@ -258,9 +270,9 @@ if (isset($_POST['paso-2'],$_POST['orden']) and !empty($_POST['orden'])) {
 				$emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+				// // Foto
+				// $foto = subirImagen($_POST['cedula']);
+				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
 				$emp->setProfesion($_POST['profesion']);
@@ -298,13 +310,26 @@ if (isset($_POST['paso-2'],$_POST['orden']) and !empty($_POST['orden'])) {
 		$tel->editarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
 		$tel->editarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
 
-		header('Location: ../lobby/consultar/personal.php');	.
+		header('Location: ../lobby/consultar/personal.php');
 	}
+
+	// 
+	// 
+	// 
+	// 
+	// 
 
 	// ORDENES PARA ELIMINAR
 	elseif ($_POST['orden'] == 'eliminar') {
-		// code...
+		require('../clases/persona.php');
+		$per = new Persona();
+		$per->setid_Personas($_POST['id_Persona']);
+		$per->eliminarPersona();
+		header('Location:../lobby/consultar/personal.php');
 	}
+}
+else {
+	header('Location:../lobby/index.php');
 }
 
 ?>

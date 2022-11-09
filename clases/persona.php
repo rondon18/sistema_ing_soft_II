@@ -75,6 +75,18 @@ class Persona {
 		desconectar($conexion);
 	}
 
+	public function eliminarPersona() {
+		$conexion = conectar();
+		
+		$id_Personas = $this->getid_Personas();
+
+		// La cédula no es actualizable
+		$sql = "DELETE FROM `personas` WHERE `id_Persona`='$id_Personas'";
+
+		$conexion->query($sql) or die("error: ".$conexion->error);
+		desconectar($conexion);
+	}
+
 	// Getters
 
 	public function getid_Personas() {

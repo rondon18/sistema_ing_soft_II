@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../estilos/main.css">
-	<title>Registrar empleado | Paso 1</title>
+	<title>Editar empleado | Paso 1</title>
 </head>
 <body>
 	<main>
@@ -14,7 +14,7 @@
 				<table border="1" cellpadding="10" style="max-width: 700px; margin: auto;">
 					<thead>
 						<tr>
-							<th colspan="5">Registrar personal</th>
+							<th colspan="5">Editar personal</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +39,7 @@
 						</tr>
 						<tr>
 							<td colspan="2"><label for="T_empleado">Tipo de empleado</label></td>
+
 							<td colspan="3">
 								<select id="T_empleado" name="T_empleado" required>
 									<option value="" selected disabled>Tipo de empleado</option>

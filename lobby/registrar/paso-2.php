@@ -13,7 +13,7 @@ if (!isset($_POST['paso-1'])) {
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="../estilos/main.css">
-		<title>Registrar empleado | Paso 2</title>
+		<title>Editar empleado | Paso 2</title>
 	</head>
 	<body>
 		<main>
@@ -23,7 +23,7 @@ if (!isset($_POST['paso-1'])) {
 					<table border="1" cellpadding="10" style="max-width: 700px; margin: auto;">
 						<thead>
 							<tr>
-								<th colspan="5">Registrar personal</th>
+								<th colspan="5">Editar personal</th>
 							</tr>
 						</thead>
 						<tbody>
