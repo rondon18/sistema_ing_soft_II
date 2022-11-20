@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../estilos/main.css">
-	<title>Editar empleado | Paso 1</title>
+	<title>Registrar empleado | Paso 1</title>
 </head>
 <body>
 	<main>
 		<header></header>
 		<section>
 			<form action="paso-2.php" method="post">
-				<table border="1" cellpadding="10" style="max-width: 700px; margin: auto;">
+				<table border="1" cellpadding="6" style="max-width: 90vw; margin: auto;">
 					<thead>
 						<tr>
 							<th colspan="5">Editar personal</th>
@@ -54,13 +54,41 @@
 							<td colspan="3"><input id="F_nac" type="date" name="F_nac" required></td>
 						</tr>
 						<tr>
-							<th colspan="5">Contacto</th>
+							<td colspan="2"><label>Sexo</label></td>
+							<td colspan="3">
+								<span>Femenino</span>
+								<input type="radio" name="sexo" id="sexo_F" value="F">
+								<span>Masculino</span>
+								<input type="radio" name="sexo" id="sexo_M" value="M">
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><label>Observaciones</label></td>
+							<td colspan="3">
+								<textarea id="observaciones" name="observaciones" rows="3"></textarea>
+							</td>
+						</tr>
+						
+						<tr>
+							<th colspan="5">Dirección</th>
+						</tr>
+						<tr>
+							<td colspan="2">Municipio</td>
+							<td colspan="3"><input type="text"></td>
+						</tr>
+						<tr>
+							<td colspan="2">Parroquia</td>
+							<td colspan="3"><input type="text"></td>
 						</tr>
 						<tr>
 							<td colspan="2"><label for="direccion">Dirección</label></td>
 							<td colspan="3">
-								<textarea id="direccion" name="direccion" rows="3" required></textarea>
+								<textarea id="direccion" name="direccion" rows="2" required></textarea>
 							</td>
+						</tr>
+
+						<tr>
+							<th colspan="5">Contacto</th>
 						</tr>
 						<tr>
 							<td colspan="2"><label for="correo">Correo eléctronico</label></td>
@@ -76,8 +104,8 @@
 						<tr>
 							<td colspan="2"><label>Teléfono secundario</label></td>
 							<td colspan="3">
-								<input id="pref_S" type="text" name="pref_S" placeholder="Prefijo / Codigo de país" minlength="4" maxlength="6">
-								<input id="tel_S" type="text" name="tel_S" placeholder="Número" minlength="7" maxlength="10">
+								<input id="pref_S" type="text" name="pref_S" placeholder="Prefijo / Codigo de país" minlength="4" maxlength="6" required>
+								<input id="tel_S" type="text" name="tel_S" placeholder="Número" minlength="7" maxlength="10" required>
 							</td>
 						</tr>
 						<tr>
@@ -86,6 +114,17 @@
 								<input id="pref_A" type="text" name="pref_A" placeholder="Prefijo / Codigo de país" minlength="4" maxlength="6">
 								<input id="tel_A" type="text" name="tel_A" placeholder="Número" minlength="7" maxlength="10">
 							</td>
+						</tr>
+						<tr>
+							<th colspan="5">Vacunación</th>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="T_empleado">Vacuna aplicada</label></td>
+							<td colspan="3"><input type="text"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="T_empleado">Dosis aplicadas</label></td>
+							<td colspan="3"><input type="number"></td>
 						</tr>
 						<tr>
 							<td><button type="submit">Guardar y continuar</button></td>

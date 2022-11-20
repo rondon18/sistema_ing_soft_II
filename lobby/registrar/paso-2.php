@@ -20,7 +20,7 @@ if (!isset($_POST['paso-1'])) {
 			<header></header>
 			<section>
 				<form action="../../controladores/control-empleados.php" method="post" enctype="multipart/form-data">
-					<table border="1" cellpadding="10" style="max-width: 700px; margin: auto;">
+					<table border="1" cellpadding="6" style="max-width: 700px; margin: auto;">
 						<thead>
 							<tr>
 								<th colspan="5">Editar personal</th>
@@ -42,6 +42,9 @@ if (!isset($_POST['paso-1'])) {
 							<tr>
 								<td colspan="2"><label for="T_nomina">Tiempo en nomina</label></td>
 								<td colspan="3"><input id="T_nomina" type="text" name="T_nomina" required></td>
+							</tr>
+							<tr>
+								<th colspan="5">Carga horaria semanal</th>
 							</tr>
 
 							<?php if ($_POST['T_empleado'] == 0): // Caso Obrero?>

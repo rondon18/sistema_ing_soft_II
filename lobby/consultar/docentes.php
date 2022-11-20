@@ -39,6 +39,10 @@ $lista_doc = $doc->mostrar();
 						<th colspan="5">Consulta de docentes</th>
 					</tr>
 					<tr>
+						<td><a href="../../controladores/docente-excel.php">Descargar Excel</a></td>
+						<td><a href="../../controladores/docente-pdf.php" target="_blank">Descargar PDF</a></td>
+					</tr>
+					<tr>
 						<td colspan="5">
 							<table id="" border="1" cellpadding="8" style="width: 100%;">
 								<thead>
@@ -63,7 +67,7 @@ $lista_doc = $doc->mostrar();
 										<td><?php echo $Docente['Fecha_Nac']; ?></td>
 										<td><?php echo $Docente['Profesion']; ?></td>
 										<td><?php echo $Docente['Tipo_Cargo']; ?></td>
-										<td><?php echo $Docente['Hrs_Academicas']; ?></td>
+										<td><?php echo $Docente['Hrs_Academicas']." Horas"; ?></td>
 										<td><?php echo $Docente['Area']; ?></td>
 										<td>
 											<form action="consultar-empleado.php" method="post">

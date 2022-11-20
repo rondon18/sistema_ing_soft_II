@@ -2,11 +2,11 @@
 
 require('conexion.php');
 
-// foreach ($_POST as $key => $value) {
-// 	var_dump($key);
-// 	var_dump($value);
-// 	echo "<br>";
-// }
+foreach ($_POST as $key => $value) {
+	var_dump($key);
+	var_dump($value);
+	echo "<br>";
+}
 
 function subirImagen($cedula) {
 	
@@ -74,6 +74,8 @@ if
 	(
 		isset($_POST['paso-1'],$_POST['orden']) 
 		or 
+		isset($_POST['paso-2'],$_POST['orden']) 
+		or 
 		isset($_POST['editar'],$_POST['orden'])
 		or 
 		isset($_POST['eliminar'],$_POST['orden'])
@@ -84,113 +86,113 @@ if
 {
 	// ORDENES PARA INSERTAR
 	if ($_POST['orden'] == 'insertar') {
-		switch ($_POST['T_empleado']) {
+		// switch ($_POST['T_empleado']) {
 			
-			// Caso Obrero
-			case 0:
-				require("../clases/obrero.php");
-				$emp = new Obrero();
+		// 	// Caso Obrero
+		// 	case 0:
+		// 		require("../clases/obrero.php");
+		// 		$emp = new Obrero();
 
-				// Persona
-				$emp->setNombre($_POST['nombre']);
-				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
-				$emp->setFecha_Nac($_POST['F_nac']);
+		// 		// Persona
+		// 		$emp->setNombre($_POST['nombre']);
+		// 		$emp->setApellido($_POST['apellido']);
+		// 		$emp->setCedula($_POST['cedula']);
+		// 		$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+		// 		// Foto
+		// 		$foto = subirImagen($_POST['cedula']);
+		// 		$emp->setRuta_Imagen($foto);
 				
-				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+		// 		// Empleado
+		// 		$emp->setProfesion($_POST['profesion']);
+		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
+		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
 				
-				// Obrero
-				$emp->setHoras($_POST['horas']);
+		// 		// Obrero
+		// 		$emp->setHoras($_POST['horas']);
 				
-				$emp->insertarObrero();
-				break;
+		// 		$emp->insertarObrero();
+		// 		break;
 			
-			// Caso Docente
-			case 1:
-				require("../clases/docente.php");
-				$emp = new Docente();
+		// 	// Caso Docente
+		// 	case 1:
+		// 		require("../clases/docente.php");
+		// 		$emp = new Docente();
 
-				// Persona
-				$emp->setNombre($_POST['nombre']);
-				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
-				$emp->setFecha_Nac($_POST['F_nac']);
+		// 		// Persona
+		// 		$emp->setNombre($_POST['nombre']);
+		// 		$emp->setApellido($_POST['apellido']);
+		// 		$emp->setCedula($_POST['cedula']);
+		// 		$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+		// 		// Foto
+		// 		$foto = subirImagen($_POST['cedula']);
+		// 		$emp->setRuta_Imagen($foto);
 				
-				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+		// 		// Empleado
+		// 		$emp->setProfesion($_POST['profesion']);
+		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
+		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
 
-				// Docente
-				$emp->setHrs_Academicas($_POST['horas']);
-				$emp->setArea($_POST['area']);
+		// 		// Docente
+		// 		$emp->setHrs_Academicas($_POST['horas']);
+		// 		$emp->setArea($_POST['area']);
 
-				$emp->insertarDocente();
-				break;
+		// 		$emp->insertarDocente();
+		// 		break;
 
-			// Caso Administrativo
-			case 2:
-				require("../clases/administrativo.php");
-				$emp = new Administrativo();
+		// 	// Caso Administrativo
+		// 	case 2:
+		// 		require("../clases/administrativo.php");
+		// 		$emp = new Administrativo();
 
-				// Persona
-				$emp->setNombre($_POST['nombre']);
-				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
-				$emp->setFecha_Nac($_POST['F_nac']);
+		// 		// Persona
+		// 		$emp->setNombre($_POST['nombre']);
+		// 		$emp->setApellido($_POST['apellido']);
+		// 		$emp->setCedula($_POST['cedula']);
+		// 		$emp->setFecha_Nac($_POST['F_nac']);
 				
-				// Foto
-				$foto = subirImagen($_POST['cedula']);
-				$emp->setRuta_Imagen($foto);
+		// 		// Foto
+		// 		$foto = subirImagen($_POST['cedula']);
+		// 		$emp->setRuta_Imagen($foto);
 				
-				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+		// 		// Empleado
+		// 		$emp->setProfesion($_POST['profesion']);
+		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
+		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
 
-				// Administrativo (Aún no tiene datos especificos)
+		// 		// Administrativo (Aún no tiene datos especificos)
 				
-				$emp->insertarAdministrativo();
-				break;
+		// 		$emp->insertarAdministrativo();
+		// 		break;
 			
-			// Respuesta en caso aparte
-			default:
-				header('Location: ../lobby/consultar/personal.php?error');
-				break;
-		}
+		// 	// Respuesta en caso aparte
+		// 	default:
+		// 		header('Location: ../lobby/consultar/personal.php?error');
+		// 		break;
+		// }
 		
-		// Ficha de contacto
-		require('../clases/contacto.php');
-		$con = new Contacto();
+		// // Ficha de contacto
+		// require('../clases/contacto.php');
+		// $con = new Contacto();
 		
-		$con->setCorreo($_POST['correo']);	
-		$con->setDireccion($_POST['direccion']);
-		$con->setid_Personas($emp->getid_Personas());
+		// $con->setCorreo($_POST['correo']);	
+		// $con->setDireccion($_POST['direccion']);
+		// $con->setid_Personas($emp->getid_Personas());
 
-		$con->insertarContacto();
+		// $con->insertarContacto();
 
-		// Telefonos
-		require('../clases/telefono.php');
-		$tel = new Telefono();
+		// // Telefonos
+		// require('../clases/telefono.php');
+		// $tel = new Telefono();
 
-		// Telefonos principal, secundario y auxiliar.
-		// En ese mismo orden
-		$tel->insertarTelefono($_POST['pref_P'],$_POST['tel_P'],'P',$con->getid_Contacto());
-		$tel->insertarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
-		$tel->insertarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
+		// // Telefonos principal, secundario y auxiliar.
+		// // En ese mismo orden
+		// $tel->insertarTelefono($_POST['pref_P'],$_POST['tel_P'],'P',$con->getid_Contacto());
+		// $tel->insertarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
+		// $tel->insertarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
 
-		header('Location: ../lobby/consultar/personal.php');	
+		// header('Location: ../lobby/consultar/personal.php');	
 	}
 
 	// 
