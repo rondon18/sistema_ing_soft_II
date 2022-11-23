@@ -1,6 +1,9 @@
 <?php  
 require('../../controladores/conexion.php');
 require('../../clases/administrativo.php');
+require('../../clases/calculos.php');
+
+$calc = new Calculo();
 
 $adm = new Administrativo();
 
@@ -44,8 +47,7 @@ $lista_adm = $adm->mostrar();
 										<th>Apellido</th>
 										<th>Cédula</th>
 										<th>Fecha de nacimiento</th>
-										<th>Profesión</th>
-										<th>Tipo de cargo</th>
+										<th>Tiempo en nomina</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -56,8 +58,7 @@ $lista_adm = $adm->mostrar();
 										<td><?php echo $Administrativo['Apellido']; ?></td>
 										<td><?php echo $Administrativo['Cedula']; ?></td>
 										<td><?php echo $Administrativo['Fecha_Nac']; ?></td>
-										<td><?php echo $Administrativo['Profesion']; ?></td>
-										<td><?php echo $Administrativo['Tipo_Cargo']; ?></td>
+										<td><?php echo $calc->diferenciaF($Administrativo['Fecha_Ingreso']); ?></td>
 										<td>
 											<form action="consultar-empleado.php" method="post">
 												<input type="hidden" name="id_Persona" value="<?php echo $Administrativo['id_Persona']; ?>">

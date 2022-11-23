@@ -8,6 +8,7 @@ class Persona {
 	private $Cedula;
 	private $Fecha_Nac;
 	private $Ruta_Imagen;
+	private $Sexo;
 
 
 	public function __construct() {}
@@ -21,25 +22,26 @@ class Persona {
 		$Cedula = $this->getCedula();
 		$Fecha_Nac = $this->getFecha_Nac();
 		$Ruta_Imagen = $this->getRuta_Imagen();
+		$Sexo = $this->getSexo();
 
 		$sql = "
-			INSERT IGNORE INTO `personas`
-			(
-				`id_Persona`, 
-				`Nombre`, 
-				`Apellido`, 
-				`Cedula`, 
-				`Fecha_Nac`, 
-				`Ruta_Imagen`
-			) 
-			VALUES 
-			(
-				NULL,
-				'$Nombre',
-				'$Apellido',
-				'$Cedula',
-				'$Fecha_Nac',
-				'$Ruta_Imagen'
+			INSERT INTO `personas`(
+			    `id_Persona`,
+			    `Nombre`,
+			    `Apellido`,
+			    `Cedula`,
+			    `Fecha_Nac`,
+			    `Ruta_Imagen`,
+			    `Sexo`
+			)
+			VALUES(
+			    NULL,
+			    '$Nombre',
+			    '$Apellido',
+			    '$Cedula',
+			    '$Fecha_Nac',
+			    '$Ruta_Imagen',
+			    '$Sexo'
 			);
 		";
 
@@ -56,7 +58,6 @@ class Persona {
 		$Nombre = $this->getNombre();
 		$Apellido = $this->getApellido();
 		$Fecha_Nac = $this->getFecha_Nac();
-		$Ruta_Imagen = $this->getRuta_Imagen();
 
 		// La cédula no es actualizable
 		$sql = "
@@ -65,8 +66,7 @@ class Persona {
 			SET 
 				`Nombre`='$Nombre',
 				`Apellido`='$Apellido',
-				`Fecha_Nac`='$Fecha_Nac',
-				`Ruta_Imagen`='$Ruta_Imagen' 
+				`Fecha_Nac`='$Fecha_Nac'
 			WHERE
 				`id_Persona`='$id_Personas'
 		";
@@ -113,6 +113,10 @@ class Persona {
 		return $this->Ruta_Imagen;
 	}
 
+	public function getSexo() {
+		return $this->Sexo;
+	}
+
 
 	// Setters
 	public function setid_Personas($id_Personas) {
@@ -137,6 +141,10 @@ class Persona {
 
 	public function setRuta_Imagen($Ruta_Imagen) {
 		$this->Ruta_Imagen = $Ruta_Imagen;
+	}
+
+	public function setSexo($Sexo) {
+		$this->Sexo = $Sexo;
 	}
 
 }

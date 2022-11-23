@@ -3,7 +3,6 @@
 class Contacto {
 	private $id_Contacto;
 	private $Correo;
-	private $Direccion;
 	private $id_Personas;
 
 	private $T_principal;
@@ -16,7 +15,6 @@ class Contacto {
 		$conexion = conectar();
 
 		$Correo = $this->getCorreo();
-		$Direccion = $this->getDireccion();
 		$id_Personas = $this->getid_Personas();
 
 		$sql = "
@@ -25,13 +23,11 @@ class Contacto {
 			`id_Contacto`,
 
 			`Correo`,
-			`Direccion`,
 			`id_Personas`) 
 		VALUES 
 		(
 			NULL,
 			'$Correo',
-			'$Direccion',
 			'$id_Personas'
 		);
 		";
@@ -46,15 +42,13 @@ class Contacto {
 		$conexion = conectar();
 
 		$Correo = $this->getCorreo();
-		$Direccion = $this->getDireccion();
 		$id_Personas = $this->getid_Personas();
 
 		$sql = "
 			UPDATE 
 				`contactos` 
 			SET 
-				`Correo`='$Correo',
-				`Direccion`='$Direccion'
+				`Correo`='$Correo'
 			WHERE 
 				`id_Personas`='$id_Personas'
 		";
@@ -86,10 +80,6 @@ class Contacto {
 		return $this->Correo;
 	}
 	
-	public function getDireccion() {
-		return $this->Direccion;
-	}
-	
 	public function getid_Personas() {
 		return $this->id_Personas;
 	}
@@ -113,10 +103,6 @@ class Contacto {
 	
 	public function setCorreo($Correo) {
 		$this->Correo = $Correo;
-	}
-	
-	public function setDireccion($Direccion) {
-		$this->Direccion = $Direccion;
 	}
 	
 	public function setid_Personas($id_Personas) {

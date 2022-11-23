@@ -4,38 +4,21 @@ require_once 'persona.php';
 
 class Empleado extends Persona {
 	private $id_Empleado;
-	private $Profesion;
-	private $Tipo_Cargo;
-	private $Tiempo_Nomina;
+	private $Fecha_Ingreso;
 
 	public function __construct() {}
 
 	public function insertarEmpleado() {
 		$conexion = conectar();
 		
-		$Profesion = $this->getProfesion();
-		$Tipo_Cargo = $this->getTipo_Cargo();
-		$Tiempo_Nomina = $this->getTiempo_Nomina();
+		$Fecha_Ingreso = $this->getFecha_Ingreso();
 		$id_Personas = $this->getid_Personas();
 
-		$sql = "
-			INSERT IGNORE INTO `empleados`
-			(
-				`id_Empleado`, 
-				`Profesion`, 
-				`Tipo_Cargo`, 
-				`Tiempo_Nomina`, 
-				`id_Personas`
-			) 
-			VALUES 
-			(
-				NULL,
-				'$Profesion',
-				'$Tipo_Cargo',
-				'$Tiempo_Nomina',
-				'$id_Personas'
-			);
-		";
+		$sql = "INSERT IGNORE INTO `empleados`(`id_Empleado`, `Fecha_Ingreso`, `id_Personas`) VALUES (
+			NULL,
+			'$Fecha_Ingreso',
+			'$id_Personas'
+		);";
 
 		$conexion->query($sql) or die("error: ".$conexion->error);
 		$this->setid_Empleado($conexion->insert_id);
@@ -45,22 +28,16 @@ class Empleado extends Persona {
 	public function editarEmpleado() {
 		$conexion = conectar();
 		
-		$Profesion = $this->getProfesion();
-		$Tipo_Cargo = $this->getTipo_Cargo();
-		$Tiempo_Nomina = $this->getTiempo_Nomina();
+		$Fecha_Ingreso = $this->getFecha_Ingreso();
 		$id_Personas = $this->getid_Personas();
 
 		// La cédula no es actualizable
 		$sql = "
-			UPDATE 
-				`empleados` 
-			SET 
-				`Profesion`='$Profesion',
-				`Tipo_Cargo`='$Tipo_Cargo',
-				`Tiempo_Nomina`='$Tiempo_Nomina'	
-			WHERE 
-				`id_Personas`='$id_Personas';
-		";
+		UPDATE `empleados` SET 
+		`Fecha_Ingreso`='$Fecha_Ingreso'
+		WHERE 
+		`id_Personas`='$id_Personas'
+		;";
 
 		$conexion->query($sql) or die("error: ".$conexion->error);
 		desconectar($conexion);
@@ -129,30 +106,18 @@ class Empleado extends Persona {
 		return $this->id_Empleado;
 	}
 
-	public function getProfesion() {
-		return $this->Profesion;
+	public function getFecha_Ingreso() {
+		return $this->Fecha_Ingreso;
 	}
 
-	public function getTipo_Cargo() {
-		return $this->Tipo_Cargo;
-	}
-
-	public function getTiempo_Nomina() {
-		return $this->Tiempo_Nomina;
-	}
 
 	// Setters
 	public function setid_Empleado($id_Empleado) {
 		$this->id_Empleado = $id_Empleado;
 	}
-	public function setProfesion($Profesion) {
-		$this->Profesion = $Profesion;
+	public function setFecha_Ingreso($Fecha_Ingreso) {
+		$this->Fecha_Ingreso = $Fecha_Ingreso;
 	}
-	public function setTipo_Cargo($Tipo_Cargo) {
-		$this->Tipo_Cargo = $Tipo_Cargo;
-	}
-	public function setTiempo_Nomina($Tiempo_Nomina) {
-		$this->Tiempo_Nomina = $Tiempo_Nomina;
-	}
+
 }
 ?>

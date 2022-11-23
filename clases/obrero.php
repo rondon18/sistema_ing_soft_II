@@ -4,7 +4,7 @@ require('empleado.php');
 
 class Obrero extends Empleado {
 	private $id_Obrero; 	
-	private $Horas;
+	private $Rol;
 
 	public function __construct(){}
 
@@ -15,21 +15,15 @@ class Obrero extends Empleado {
 
 		$conexion = conectar();
 
-		$Horas = $this->getHoras();
+		$Rol = $this->getRol();
 		$id_Empleado = $this->getid_Empleado();
 
 		$sql = "
-			INSERT IGNORE INTO `obreros` 
-			(
-				`id_Obrero`, 
-				`Horas`, 
-				`id_Empleado`
-			)
-			VALUES 
-			(
-				NULL,
-				'$Horas',
-				'$id_Empleado'
+			INSERT INTO `obreros`(`id_Obrero`, `Rol`, `id_Empleado`)
+			VALUES(
+			    NULL,
+			    '$Rol',
+			    '$id_Empleado'
 			);
 		";
 		
@@ -46,14 +40,14 @@ class Obrero extends Empleado {
 
 		$conexion = conectar();
 
-		$Horas = $this->getHoras();
+		$Rol = $this->getRol();
 		$id_Empleado = $this->getid_Empleado();
 
 		$sql = "
 			UPDATE 
 				`obreros` 
 			SET 
-				`Horas`='$Horas'			
+				`Rol`='$Rol'			
 			WHERE 
 				`id_Empleado`='$id_Empleado' 
 		";
@@ -114,16 +108,16 @@ class Obrero extends Empleado {
 		return $this->id_Obrero;
 	}
 	
-	public function getHoras() {
-		return $this->Horas;
+	public function getRol() {
+		return $this->Rol;
 	}
 	
 	public function setid_Obrero($id_Obrero) {
 		$this->id_Obrero = $id_Obrero;
 	}
 	
-	public function setHoras($Horas) {
-		$this->Horas = $Horas;
+	public function setRol($Rol) {
+		$this->Rol = $Rol;
 	}
 }
 

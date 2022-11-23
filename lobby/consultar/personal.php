@@ -2,8 +2,10 @@
 
 require('../../controladores/conexion.php');
 require('../../clases/empleado.php');
+require('../../clases/calculos.php');
 
 $emp = new Empleado();
+$calc = new Calculo();
 
 $lista_personal = $emp->mostrar();
 
@@ -51,8 +53,6 @@ $lista_personal = $emp->mostrar();
 											<th>Apellido</th>
 											<th>Cédula</th>
 											<th>Fecha de nacimiento</th>
-											<th>Profesión</th>
-											<th>Tipo de cargo</th>
 											<th>Tiempo en nomina</th>
 											<th>Tipo de personal</th>
 											<th>Acciones</th>
@@ -65,9 +65,7 @@ $lista_personal = $emp->mostrar();
 												<td><?php echo $empleado['Apellido']; ?></td>
 												<td><?php echo $empleado['Cedula']; ?></td>
 												<td><?php echo $empleado['Fecha_Nac']; ?></td>
-												<td><?php echo $empleado['Profesion']; ?></td>
-												<td><?php echo $empleado['Tipo_Cargo']; ?></td>
-												<td><?php echo $empleado['Tiempo_Nomina']; ?></td>
+												<td><?php echo $calc->diferenciaF($empleado['Fecha_Ingreso']); ?></td>
 												<?php  
 													$emp->setid_Empleado($empleado['id_Empleado']);
 													$tipo_empleado = $emp->verificarTipo();

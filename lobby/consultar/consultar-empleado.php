@@ -1,8 +1,14 @@
 <?php 
 
 require('../../controladores/conexion.php');
+require('../../clases/calculos.php');
+
 require('../../clases/contacto.php');
 require('../../clases/telefono.php');
+require('../../clases/direccion.php');
+require('../../clases/informe.php');
+require('../../clases/estudio.php');
+require('../../clases/carga-horaria.php');
 
 if ($_POST['tipo_empleado'] == 1) {
 	include('../../clases/obrero.php');
@@ -26,6 +32,20 @@ $contacto = $con->consultar($_POST['id_Persona']);
 $tel = new Telefono();
 $telefonos = $tel->consultar($contacto['id_Contacto']);
 
+$dir = new Direccion();
+$direccion = $dir->consultar($contacto['id_Contacto']);
+
+$inf = new Informe();
+$informe = $inf->consultar($contacto['id_Contacto']);
+
+$est = new Estudio();
+$estudio = $est->consultar($contacto['id_Contacto']);
+
+$ch = new Carga_Horaria();
+$carga = $ch->consultar($contacto['id_Contacto']);
+
+
+$calc = new Calculo();
 ?>
 
 
@@ -101,6 +121,11 @@ $telefonos = $tel->consultar($contacto['id_Contacto']);
 									<td>Fecha_Nac</td>
 									<td colspan="4"><?php echo $empleado['Fecha_Nac']; ?></td>
 								</tr>
+								
+								<tr>
+									<td>Sexo</td>
+									<td colspan="4"><?php echo $empleado['Sexo']; ?></td>
+								</tr>
 
 								<tr>
 									<th colspan="5">Información de contacto</th>
@@ -117,8 +142,16 @@ $telefonos = $tel->consultar($contacto['id_Contacto']);
 								</tr>
 
 								<tr>
+									<td>Municipio</td>
+									<td colspan="4"><?php echo $direccion['Municipio']; ?></td>
+								</tr>
+								<tr>
+									<td>Parroquia</td>
+									<td colspan="4"><?php echo $direccion['Parroquia']; ?></td>
+								</tr>
+								<tr>
 									<td>Direccion</td>
-									<td colspan="4"><?php echo $contacto['Direccion']; ?></td>
+									<td colspan="4"><?php echo $direccion['Direccion']; ?></td>
 								</tr>
 								
 								<?php foreach ($telefonos as $telefono): ?>
@@ -130,30 +163,71 @@ $telefonos = $tel->consultar($contacto['id_Contacto']);
 								</tr>
 								<?php endforeach ?>
 
+								<tr>
+									<th colspan="5">Estudios</th>
+								</tr>
 
+								<tr>
+									<td>Nivel académico</td>
+									<td colspan="4"><?php echo $calc->nivelAcademico($estudio['Nivel_Acad']); ?></td>
+								</tr>
+								<tr>
+									<td>Titulo</td>
+									<td colspan="4"><?php echo $estudio['Titulo_Obt']; ?></td>
+								</tr>
+								<tr>
+									<td>Mención</td>
+									<td colspan="4"><?php echo $estudio['Mencion']; ?></td>
+								</tr>
+								<tr>
+									<td>Estudio de segundo grado</td>
+									<td colspan="4"><?php echo $estudio['Estudio_2do_Nvl']; ?></td>
+								</tr>
+
+								<tr>
+									<th colspan="5">Informes médicos</th>
+								</tr>
+								<tr>
+									<td>Certificado de salud</td>
+									<td colspan="4"><?php echo $informe['Cert_Salud']; ?></td>
+								</tr>
+								<tr>
+									<td>Tarjeta de vacunacion</td>
+									<td colspan="4"><?php echo $informe['Tarjeta_Vac']; ?></td>
+								</tr>
 
 								<tr>
 									<th colspan="5">Información de empleado</th>
 								</tr>
-
+								
 								<tr>
 									<td>Id</td>
 									<td colspan="4"><?php echo $empleado['id_Empleado']; ?></td>
 								</tr>
-								
+																
 								<tr>
-									<td>Profesion</td>
-									<td colspan="4"><?php echo $empleado['Profesion']; ?></td>
+									<td>Fecha de ingreso</td>
+									<td colspan="4"><?php echo $empleado['Fecha_Ingreso']; ?></td>
 								</tr>
-								
+																
 								<tr>
-									<td>Tipo_Cargo</td>
-									<td colspan="4"><?php echo $empleado['Tipo_Cargo']; ?></td>
-								</tr>
-								
+									<td>Carga horaria semanal</td>
+									<td colspan="4"><?php echo $carga['Carga_Horaria_Semanal']." Horas"; ?></td>
+								</tr>	
+																
+								<tr>
+									<td>Carga horaria mensual</td>
+									<td colspan="4"><?php echo $calc->cargaHoraria_M($carga['Carga_Horaria_Semanal'])." Horas"; ?></td>
+								</tr>	
+																
+								<tr>
+									<td>Carga horaria anual</td>
+									<td colspan="4"><?php echo $calc->cargaHoraria_A($carga['Carga_Horaria_Semanal'])." Horas"; ?></td>
+								</tr>	
+
 								<tr>
 									<td>Tiempo_Nomina</td>
-									<td colspan="4"><?php echo $empleado['Tiempo_Nomina']; ?></td>
+									<td colspan="4"><?php echo $calc->diferenciaF($empleado['Fecha_Ingreso']); ?></td>
 								</tr>
 
 								<?php if ($_POST['tipo_empleado'] == 1): ?>
@@ -167,8 +241,8 @@ $telefonos = $tel->consultar($contacto['id_Contacto']);
 								</tr>
 
 								<tr>
-									<td>Horas</td>
-									<td colspan="4"><?php echo $empleado['Horas']; ?></td>
+									<td>Rol de obrero</td>
+									<td colspan="4"><?php echo $empleado['Rol']; ?></td>
 								</tr>
 								<?php elseif ($_POST['tipo_empleado'] == 2): ?>
 								<tr>
@@ -181,8 +255,8 @@ $telefonos = $tel->consultar($contacto['id_Contacto']);
 								</tr>
 								
 								<tr>
-									<td>Hrs_Academicas</td>
-									<td colspan="4"><?php echo $empleado['Hrs_Academicas']; ?></td>
+									<td>Horas de clase semanales</td>
+									<td colspan="4"><?php echo $empleado['Horas_Clase_S']; ?></td>
 								</tr>
 								
 								<tr>

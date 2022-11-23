@@ -1,9 +1,11 @@
 <?php 
 
 require('../../controladores/conexion.php');
+require('../../clases/calculos.php');
 require('../../clases/obrero.php');
 
 $ob = new Obrero();
+$calc = new Calculo();
 
 $lista_ob = $ob->mostrar();
 
@@ -47,9 +49,8 @@ $lista_ob = $ob->mostrar();
 										<th>Apellido</th>
 										<th>Cédula</th>
 										<th>Fecha de nacimiento</th>
-										<th>Profesión</th>
-										<th>Tipo de cargo</th>
-										<th>Horas</th>
+										<th>Rol de obrero</th>
+										<th>Tiempo en nomina</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -60,9 +61,8 @@ $lista_ob = $ob->mostrar();
 										<td><?php echo $Obrero['Apellido']; ?></td>
 										<td><?php echo $Obrero['Cedula']; ?></td>
 										<td><?php echo $Obrero['Fecha_Nac']; ?></td>
-										<td><?php echo $Obrero['Profesion']; ?></td>
-										<td><?php echo $Obrero['Tipo_Cargo']; ?></td>
-										<td><?php echo $Obrero['Horas']; ?></td>
+										<td><?php echo $Obrero['Rol']; ?></td>
+										<td><?php echo $calc->diferenciaF($Obrero['Fecha_Ingreso']); ?></td>
 										<td>
 											<form action="consultar-empleado.php" method="post">
 												<input type="hidden" name="id_Persona" value="<?php echo $Obrero['id_Persona']; ?>">

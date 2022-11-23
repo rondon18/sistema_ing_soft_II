@@ -2,8 +2,10 @@
 
 require('../../controladores/conexion.php');
 require('../../clases/docente.php');
+require('../../clases/calculos.php');
 
 $doc = new Docente();
+$calc = new Calculo();
 
 $lista_doc = $doc->mostrar();
 
@@ -51,9 +53,8 @@ $lista_doc = $doc->mostrar();
 										<th>Apellido</th>
 										<th>Cédula</th>
 										<th>Fecha de nacimiento</th>
-										<th>Profesión</th>
-										<th>Tipo de cargo</th>
 										<th>Horas académicas</th>
+										<th>Tiempo en nomina</th>	
 										<th>Área</th>
 										<th>Acciones</th>
 									</tr>
@@ -65,9 +66,9 @@ $lista_doc = $doc->mostrar();
 										<td><?php echo $Docente['Apellido']; ?></td>
 										<td><?php echo $Docente['Cedula']; ?></td>
 										<td><?php echo $Docente['Fecha_Nac']; ?></td>
-										<td><?php echo $Docente['Profesion']; ?></td>
-										<td><?php echo $Docente['Tipo_Cargo']; ?></td>
-										<td><?php echo $Docente['Hrs_Academicas']." Horas"; ?></td>
+										<td><?php echo $Docente['Horas_Clase_S']." Horas semanales"; ?></td>
+										<td><?php echo $calc->diferenciaF($Docente['Fecha_Ingreso']); ?></td>
+
 										<td><?php echo $Docente['Area']; ?></td>
 										<td>
 											<form action="consultar-empleado.php" method="post">

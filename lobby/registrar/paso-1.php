@@ -6,6 +6,16 @@
 	<link rel="stylesheet" href="../estilos/main.css">
 	<title>Registrar empleado | Paso 1</title>
 </head>
+<style type="text/css">
+	
+	input:valid, select:valid {
+		box-shadow: green 0 0 2px !important;
+	}	
+	input:invalid, select:invalid {
+		box-shadow: red 0 0 2px !important;
+	}
+
+</style>
 <body>
 	<main>
 		<header></header>
@@ -14,7 +24,7 @@
 				<table border="1" cellpadding="6" style="max-width: 90vw; margin: auto;">
 					<thead>
 						<tr>
-							<th colspan="5">Editar personal</th>
+							<th colspan="5">Registrar personal</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -57,28 +67,29 @@
 							<td colspan="2"><label>Sexo</label></td>
 							<td colspan="3">
 								<span>Femenino</span>
-								<input type="radio" name="sexo" id="sexo_F" value="F">
+								<input type="radio" name="sexo" id="sexo_F" value="F" required>
 								<span>Masculino</span>
-								<input type="radio" name="sexo" id="sexo_M" value="M">
+								<input type="radio" name="sexo" id="sexo_M" value="M" required>
 							</td>
 						</tr>
+						<!-- 
 						<tr>
 							<td colspan="2"><label>Observaciones</label></td>
 							<td colspan="3">
 								<textarea id="observaciones" name="observaciones" rows="3"></textarea>
 							</td>
 						</tr>
-						
+						 -->
 						<tr>
 							<th colspan="5">Dirección</th>
 						</tr>
 						<tr>
 							<td colspan="2">Municipio</td>
-							<td colspan="3"><input type="text"></td>
+							<td colspan="3"><input id="municipio" type="text" name="municipio"></td>
 						</tr>
 						<tr>
 							<td colspan="2">Parroquia</td>
-							<td colspan="3"><input type="text"></td>
+							<td colspan="3"><input id="parroquia" type="text" name="parroquia"></td>
 						</tr>
 						<tr>
 							<td colspan="2"><label for="direccion">Dirección</label></td>
@@ -88,10 +99,46 @@
 						</tr>
 
 						<tr>
+							<th colspan="5">Educación</th>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="N_academico">Nivel académico</label></td>
+							<td colspan="3">
+								<select id="N_academico" name="N_academico" required>
+									<option value="" selected disabled>Nivel académico</option>
+									<option value="0">Sin estudios</option>
+									<option value="1">Primaria</option>
+									<option value="2">Bachillerato</option>
+									<option value="3">Universidad</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="titulo">Titulo universitario</label></td>
+							<td colspan="3">
+								<input id="titulo" type="text" name="titulo" list="titulos">
+								<datalist id="titulos">
+									<option value="Tsu.">
+									<option value="Lic.">
+									<option value="Ing.">
+									<option value="Dr.">
+								</datalist>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="mencion">Mención</label></td>
+							<td colspan="3"><input id="mencion" name="mencion" type="text"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><label for="E_2do_nivel">Estudio de segundo nivel</label></td>
+							<td colspan="3"><input id="E_2do_nivel" name="E_2do_nivel" type="text"></td>
+						</tr>
+
+						<tr>
 							<th colspan="5">Contacto</th>
 						</tr>
 						<tr>
-							<td colspan="2"><label for="correo">Correo eléctronico</label></td>
+							<td colspan="2"><label for="correo">Correo electrónico</label></td>
 							<td colspan="3"><input id="correo" type="email" name="correo"></td>
 						</tr>
 						<tr>
@@ -115,22 +162,25 @@
 								<input id="tel_A" type="text" name="tel_A" placeholder="Número" minlength="7" maxlength="10">
 							</td>
 						</tr>
+
 						<tr>
 							<th colspan="5">Vacunación</th>
 						</tr>
 						<tr>
-							<td colspan="2"><label for="T_empleado">Vacuna aplicada</label></td>
-							<td colspan="3"><input type="text"></td>
+							<td colspan="2"><label for="vacuna">Vacuna aplicada</label></td>
+							<td colspan="3"><input name="vacuna" type="text"></td>
 						</tr>
 						<tr>
-							<td colspan="2"><label for="T_empleado">Dosis aplicadas</label></td>
-							<td colspan="3"><input type="number"></td>
+							<td colspan="2"><label for="dosis_vacuna">Dosis aplicadas</label></td>
+							<td colspan="3"><input name="dosis_vacuna" type="number" value="0" min="0"></td>
 						</tr>
 						<tr>
 							<td><button type="submit">Guardar y continuar</button></td>
 							<td><a href="../index.php" class="boton-primario">Volver</a></td>
 							<td colspan="2"><input type="hidden" name="paso-1" value="paso-1"></td>
 						</tr>
+
+
 					</tbody>
 					<tfoot>
 						<tr>

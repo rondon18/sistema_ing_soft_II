@@ -2,11 +2,11 @@
 
 require('conexion.php');
 
-foreach ($_POST as $key => $value) {
-	var_dump($key);
-	var_dump($value);
-	echo "<br>";
-}
+// foreach ($_POST as $key => $value) {
+// 	var_dump($key);
+// 	var_dump($value);
+// 	echo "<br>";
+// }
 
 function subirImagen($cedula) {
 	
@@ -86,113 +86,167 @@ if
 {
 	// ORDENES PARA INSERTAR
 	if ($_POST['orden'] == 'insertar') {
-		// switch ($_POST['T_empleado']) {
+		switch ($_POST['T_empleado']) {
 			
-		// 	// Caso Obrero
-		// 	case 0:
-		// 		require("../clases/obrero.php");
-		// 		$emp = new Obrero();
+			// Caso Obrero
+			case 0:
+				require("../clases/obrero.php");
+				$emp = new Obrero();
 
-		// 		// Persona
-		// 		$emp->setNombre($_POST['nombre']);
-		// 		$emp->setApellido($_POST['apellido']);
-		// 		$emp->setCedula($_POST['cedula']);
-		// 		$emp->setFecha_Nac($_POST['F_nac']);
+				// Persona
+				$emp->setNombre($_POST['nombre']);
+				$emp->setApellido($_POST['apellido']);
+				$emp->setCedula($_POST['cedula']);
+				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
 				
-		// 		// Foto
-		// 		$foto = subirImagen($_POST['cedula']);
-		// 		$emp->setRuta_Imagen($foto);
+				// Foto
+				$foto = subirImagen($_POST['cedula']);
+				$emp->setRuta_Imagen($foto);
 				
-		// 		// Empleado
-		// 		$emp->setProfesion($_POST['profesion']);
-		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
-		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
+				// Empleado
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 				
-		// 		// Obrero
-		// 		$emp->setHoras($_POST['horas']);
+				// Obrero
+				$emp->setRol($_POST['rol']);
 				
-		// 		$emp->insertarObrero();
-		// 		break;
+				$emp->insertarObrero();
+				break;
 			
-		// 	// Caso Docente
-		// 	case 1:
-		// 		require("../clases/docente.php");
-		// 		$emp = new Docente();
+			// Caso Docente
+			case 1:
+				require("../clases/docente.php");
+				$emp = new Docente();
 
-		// 		// Persona
-		// 		$emp->setNombre($_POST['nombre']);
-		// 		$emp->setApellido($_POST['apellido']);
-		// 		$emp->setCedula($_POST['cedula']);
-		// 		$emp->setFecha_Nac($_POST['F_nac']);
+				// Persona
+				$emp->setNombre($_POST['nombre']);
+				$emp->setApellido($_POST['apellido']);
+				$emp->setCedula($_POST['cedula']);
+				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
+
 				
-		// 		// Foto
-		// 		$foto = subirImagen($_POST['cedula']);
-		// 		$emp->setRuta_Imagen($foto);
+				// Foto
+				$foto = subirImagen($_POST['cedula']);
+				$emp->setRuta_Imagen($foto);
 				
-		// 		// Empleado
-		// 		$emp->setProfesion($_POST['profesion']);
-		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
-		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
+				// Empleado
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 
-		// 		// Docente
-		// 		$emp->setHrs_Academicas($_POST['horas']);
-		// 		$emp->setArea($_POST['area']);
+				// Docente
+				$emp->setHoras_Clase_S($_POST['horas_acad']);
+				$emp->setArea($_POST['area']);
 
-		// 		$emp->insertarDocente();
-		// 		break;
+				$emp->insertarDocente();
+				break;
 
-		// 	// Caso Administrativo
-		// 	case 2:
-		// 		require("../clases/administrativo.php");
-		// 		$emp = new Administrativo();
+			// Caso Administrativo
+			case 2:
+				require("../clases/administrativo.php");
+				$emp = new Administrativo();
 
-		// 		// Persona
-		// 		$emp->setNombre($_POST['nombre']);
-		// 		$emp->setApellido($_POST['apellido']);
-		// 		$emp->setCedula($_POST['cedula']);
-		// 		$emp->setFecha_Nac($_POST['F_nac']);
+				// Persona
+				$emp->setNombre($_POST['nombre']);
+				$emp->setApellido($_POST['apellido']);
+				$emp->setCedula($_POST['cedula']);
+				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
+
 				
-		// 		// Foto
-		// 		$foto = subirImagen($_POST['cedula']);
-		// 		$emp->setRuta_Imagen($foto);
+				// Foto
+				$foto = subirImagen($_POST['cedula']);
+				$emp->setRuta_Imagen($foto);
 				
-		// 		// Empleado
-		// 		$emp->setProfesion($_POST['profesion']);
-		// 		$emp->setTipo_Cargo($_POST['T_cargo']);
-		// 		$emp->setTiempo_Nomina($_POST['T_nomina']);
+				// Empleado
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 
-		// 		// Administrativo (Aún no tiene datos especificos)
+				// Administrativo (Aún no tiene datos especificos)
 				
-		// 		$emp->insertarAdministrativo();
-		// 		break;
+				$emp->insertarAdministrativo();
+				break;
 			
-		// 	// Respuesta en caso aparte
-		// 	default:
-		// 		header('Location: ../lobby/consultar/personal.php?error');
-		// 		break;
-		// }
+			// Respuesta en caso aparte
+			default:
+				header('Location: ../lobby/consultar/personal.php?error');
+				break;
+		}
 		
-		// // Ficha de contacto
-		// require('../clases/contacto.php');
-		// $con = new Contacto();
+		// Ficha de contacto
+		require('../clases/contacto.php');
+		$con = new Contacto();
 		
-		// $con->setCorreo($_POST['correo']);	
-		// $con->setDireccion($_POST['direccion']);
-		// $con->setid_Personas($emp->getid_Personas());
+		$con->setCorreo($_POST['correo']);	
+		$con->setid_Personas($emp->getid_Personas());
 
-		// $con->insertarContacto();
+		$con->insertarContacto();
 
-		// // Telefonos
-		// require('../clases/telefono.php');
-		// $tel = new Telefono();
+		// Direccion
+		require('../clases/direccion.php');
+		$dir = new Direccion();
 
-		// // Telefonos principal, secundario y auxiliar.
-		// // En ese mismo orden
-		// $tel->insertarTelefono($_POST['pref_P'],$_POST['tel_P'],'P',$con->getid_Contacto());
-		// $tel->insertarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
-		// $tel->insertarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
+		$dir->setMunicipio($_POST['municipio']);
+		$dir->setParroquia($_POST['parroquia']);
+		$dir->setDireccion($_POST['direccion']);
+		$dir->setContactos_id_Contacto($con->getid_Contacto());
 
-		// header('Location: ../lobby/consultar/personal.php');	
+		$dir->insertarDireccion();
+
+		// Telefonos
+		require('../clases/telefono.php');
+		$tel = new Telefono();
+
+		// Telefonos principal, secundario y auxiliar.
+		// En ese mismo orden
+		$tel->insertarTelefono($_POST['pref_P'],$_POST['tel_P'],'P',$con->getid_Contacto());
+		$tel->insertarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
+		$tel->insertarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
+
+		// Infome
+		require('../clases/informe.php');
+		$inf = new Informe();
+
+		// Si esta vacunado con al menos una dosis 
+		if ((!empty($_POST['vacuna']) and !empty($_POST['dosis_vacuna'])) and ($_POST['dosis_vacuna'] >=1)) {
+			$inf->setCert_Salud("Valido");
+			$inf->setTarjeta_Vac("Valido");
+		}
+		// Si no lo esta
+		else {
+			$inf->setCert_Salud("No valido");
+			$inf->setTarjeta_Vac("No valido");
+		}
+
+		$inf->setPersonas_id_Persona($emp->getid_Personas());
+
+		$inf->insertarInforme();
+
+
+		// Estudios
+		require('../clases/estudio.php');
+		$est = new Estudio();
+
+		$est->setNivel_Acad($_POST['N_academico']);
+
+		// Si el empleado tiene estudios universitarios
+		if ($_POST['N_academico'] >= 3) {
+			$est->setTitulo_Obt($_POST['titulo']);
+			$est->setMencion($_POST['mencion']);
+			$est->setEstudio_2do_Nvl($_POST['E_2do_nivel']);
+		}
+		$est->setEmpleados_id_Empleado($emp->getid_Empleado());
+
+		$est->insertarEstudio();
+
+		// Carga Horaria
+		require('../clases/carga-horaria.php');
+		$ch = new Carga_Horaria();
+
+		$ch->setCarga_Horaria_Semanal($_POST['horas']);
+		$ch->setEmpleados_id_Empleado($emp->getid_Empleado());
+
+		$ch->insertarCarga_Horaria();
+		
+		header('Location: ../lobby/consultar/personal.php');	
 	}
 
 	// 
@@ -203,10 +257,11 @@ if
 
 	// ORDENES PARA EDITAR
 	elseif ($_POST['orden'] == 'editar') {
+
 		switch ($_POST['T_empleado']) {
 			
 			// Caso Obrero
-			case 0:
+			case 1:
 				require("../clases/obrero.php");
 				$emp = new Obrero();
 
@@ -214,26 +269,25 @@ if
 				$emp->setid_Personas($_POST['id_Persona']);
 				$emp->setNombre($_POST['nombre']);
 				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
+				// $emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
 				
 				// // Foto
 				// $foto = subirImagen($_POST['cedula']);
 				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 				
 				// Obrero
-				$emp->setHoras($_POST['horas']);
+				$emp->setRol($_POST['rol']);
 				
 				$emp->editarObrero();
 				break;
 			
 			// Caso Docente
-			case 1:
+			case 2:
 				require("../clases/docente.php");
 				$emp = new Docente();
 
@@ -241,27 +295,27 @@ if
 				$emp->setid_Personas($_POST['id_Persona']);
 				$emp->setNombre($_POST['nombre']);
 				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
+				// $emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
+
 				
 				// // Foto
 				// $foto = subirImagen($_POST['cedula']);
 				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 
 				// Docente
-				$emp->setHrs_Academicas($_POST['horas']);
+				$emp->setHoras_Clase_S($_POST['horas_acad']);
 				$emp->setArea($_POST['area']);
 
 				$emp->editarDocente();
 				break;
 
 			// Caso Administrativo
-			case 2:
+			case 3:
 				require("../clases/administrativo.php");
 				$emp = new Administrativo();
 
@@ -269,17 +323,17 @@ if
 				$emp->setid_Personas($_POST['id_Persona']);
 				$emp->setNombre($_POST['nombre']);
 				$emp->setApellido($_POST['apellido']);
-				$emp->setCedula($_POST['cedula']);
+				// $emp->setCedula($_POST['cedula']);
 				$emp->setFecha_Nac($_POST['F_nac']);
+				$emp->setSexo($_POST['sexo']);
+
 				
 				// // Foto
 				// $foto = subirImagen($_POST['cedula']);
 				// $emp->setRuta_Imagen($foto);
 				
 				// Empleado
-				$emp->setProfesion($_POST['profesion']);
-				$emp->setTipo_Cargo($_POST['T_cargo']);
-				$emp->setTiempo_Nomina($_POST['T_nomina']);
+				$emp->setFecha_Ingreso($_POST['FI_nomina']);
 
 				// Administrativo (Aún no tiene datos especificos)
 				
@@ -297,10 +351,20 @@ if
 		$con = new Contacto();
 		
 		$con->setCorreo($_POST['correo']);	
-		$con->setDireccion($_POST['direccion']);
 		$con->setid_Personas($emp->getid_Personas());
 
 		$con->editarContacto();
+
+		// Direccion
+		require('../clases/direccion.php');
+		$dir = new Direccion();
+
+		$dir->setMunicipio($_POST['municipio']);
+		$dir->setParroquia($_POST['parroquia']);
+		$dir->setDireccion($_POST['direccion']);
+		$dir->setContactos_id_Contacto($con->getid_Contacto());
+
+		$dir->editarDireccion();
 
 		// Telefonos
 		require('../clases/telefono.php');
@@ -311,6 +375,51 @@ if
 		$tel->editarTelefono($_POST['pref_P'],$_POST['tel_P'],'P',$con->getid_Contacto());
 		$tel->editarTelefono($_POST['pref_S'],$_POST['tel_S'],'S',$con->getid_Contacto());
 		$tel->editarTelefono($_POST['pref_A'],$_POST['tel_A'],'A',$con->getid_Contacto());
+
+		// Infome
+		require('../clases/informe.php');
+		$inf = new Informe();
+
+		// Si esta vacunado con al menos una dosis 
+		if ((!empty($_POST['vacuna']) and !empty($_POST['dosis_vacuna'])) and ($_POST['dosis_vacuna'] >=1)) {
+			$inf->setCert_Salud("Valido");
+			$inf->setTarjeta_Vac("Valido");
+		}
+		// Si no lo esta
+		else {
+			$inf->setCert_Salud("No valido");
+			$inf->setTarjeta_Vac("No valido");
+		}
+
+		$inf->setPersonas_id_Persona($emp->getid_Personas());
+
+		$inf->editarInforme();
+
+
+		// Estudios
+		require('../clases/estudio.php');
+		$est = new Estudio();
+
+		$est->setNivel_Acad($_POST['N_academico']);
+
+		// Si el empleado tiene estudios universitarios
+		if ($_POST['N_academico'] >= 3) {
+			$est->setTitulo_Obt($_POST['titulo']);
+			$est->setMencion($_POST['mencion']);
+			$est->setEstudio_2do_Nvl($_POST['E_2do_nivel']);
+		}
+		$est->setEmpleados_id_Empleado($emp->getid_Empleado());
+
+		$est->editarEstudio();
+
+		// Carga Horaria
+		require('../clases/carga-horaria.php');
+		$ch = new Carga_Horaria();
+
+		$ch->setCarga_Horaria_Semanal($_POST['horas']);
+		$ch->setEmpleados_id_Empleado($emp->getid_Empleado());
+
+		$ch->editarCarga_Horaria();
 
 		header('Location: ../lobby/consultar/personal.php');
 	}

@@ -3,7 +3,7 @@ require('empleado.php');
 
 class Docente extends Empleado {
 	private $id_Docente; 	
-	private $Hrs_Academicas;
+	private $Horas_Clase_S;
 	private $Area;
 
 	public function __construct(){}
@@ -15,24 +15,22 @@ class Docente extends Empleado {
 
 		$conexion = conectar();
 
-		$Hrs_Academicas = $this->getHrs_Academicas();
+		$Horas_Clase_S = $this->getHoras_Clase_S();
 		$Area = $this->getArea();
 		$id_Empleado = $this->getid_Empleado();
 
 		$sql = "
-			INSERT INTO `docentes`
-			(
-				`id_Docente`,
-				`Hrs_Academicas`,
-				`Area`,
-				`id_Empleado`
-			) 
-			VALUES 
-			(
-				NULL,
-				'$Hrs_Academicas',
-				'$Area',
-				'$id_Empleado'
+			INSERT IGNORE INTO `docentes`(
+			    `id_Docente`,
+			    `Area`,
+			    `Horas_Clase_S`,
+			    `id_Empleado`
+			)
+			VALUES(
+			    NULL,
+			    '$Horas_Clase_S',
+			    '$Area',
+			    '$id_Empleado'
 			);
 		";
 		
@@ -49,7 +47,7 @@ class Docente extends Empleado {
 
 		$conexion = conectar();
 
-		$Hrs_Academicas = $this->getHrs_Academicas();
+		$Horas_Clase_S = $this->getHoras_Clase_S();
 		$Area = $this->getArea();
 		$id_Empleado = $this->getid_Empleado();
 
@@ -57,7 +55,7 @@ class Docente extends Empleado {
 			UPDATE 
 				`docentes` 
 			SET 
-				`Hrs_Academicas`='$Hrs_Academicas',
+				`Horas_Clase_S`='$Horas_Clase_S',
 				`Area`='$Area'
 			WHERE 
 				`id_Empleado`='$id_Empleado' 
@@ -117,8 +115,8 @@ class Docente extends Empleado {
 	public function getid_Docente() {
 		return $this->id_Docente;
 	}
-	public function getHrs_Academicas() {
-		return $this->Hrs_Academicas;
+	public function getHoras_Clase_S() {
+		return $this->Horas_Clase_S;
 	}
 	public function getArea() {
 		return $this->Area;
@@ -127,8 +125,8 @@ class Docente extends Empleado {
 	public function setid_Docente($id_Docente) {
 		$this->id_Docente = $id_Docente;
 	} 
-	public function setHrs_Academicas($Hrs_Academicas) {
-		$this->Hrs_Academicas = $Hrs_Academicas;
+	public function setHoras_Clase_S($Horas_Clase_S) {
+		$this->Horas_Clase_S = $Horas_Clase_S;
 	} 
 	public function setArea($Area) {
 		$this->Area = $Area;

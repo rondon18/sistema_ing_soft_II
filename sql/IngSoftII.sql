@@ -25,9 +25,6 @@ CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Personas` (
   `Fecha_Nac` DATE NOT NULL,
   `Ruta_Imagen` VARCHAR(45) NOT NULL,
   `Sexo` CHAR NOT NULL,
-  `Vacuna_Aplicada` VARCHAR(60) NOT NULL,
-  `Dosis_Vacuna` INT NOT NULL,
-  `Observacion` TEXT NOT NULL,
   PRIMARY KEY (`id_Persona`),
   UNIQUE INDEX `Cedula_UNIQUE` (`Cedula` ASC))
 ENGINE = InnoDB;
@@ -55,9 +52,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Empleados` (
   `id_Empleado` INT NOT NULL AUTO_INCREMENT,
-  `Titulo` VARCHAR(45) NOT NULL,
   `Fecha_Ingreso` DATE NOT NULL,
-  `Nivel_Academico` VARCHAR(45) NOT NULL,
   `id_Personas` INT NOT NULL,
   PRIMARY KEY (`id_Empleado`, `id_Personas`),
   INDEX `fk_Empleado_Personas1_idx` (`id_Personas` ASC),
@@ -91,7 +86,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Docentes` (
   `id_Docente` INT NOT NULL AUTO_INCREMENT,
-  `Especialidad` VARCHAR(45) NOT NULL,
+  `Area` VARCHAR(45) NOT NULL,
+  `Horas_Clase_S` INT NOT NULL,
   `id_Empleado` INT NOT NULL,
   PRIMARY KEY (`id_Docente`, `id_Empleado`),
   INDEX `fk_Docente_Empleado1_idx` (`id_Empleado` ASC),
@@ -108,7 +104,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Administrativos` (
   `id_Administrativo` INT NOT NULL AUTO_INCREMENT,
-  `Titulo_2do_Grado` VARCHAR(45) NOT NULL,
   `id_Empleado` INT NOT NULL,
   PRIMARY KEY (`id_Administrativo`, `id_Empleado`),
   INDEX `fk_Administrativo_Empleado1_idx` (`id_Empleado` ASC),
@@ -140,9 +135,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `IngSoft_II`.`Direccion`
+-- Table `IngSoft_II`.`Direcciones`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Direccion` (
+CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Direcciones` (
   `id_Direccion` INT NOT NULL AUTO_INCREMENT,
   `Municipio` VARCHAR(100) NOT NULL,
   `Parroquia` VARCHAR(100) NOT NULL,
@@ -170,6 +165,62 @@ CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Carga_Horaria` (
   CONSTRAINT `fk_Carga_Horaria_Empleados1`
     FOREIGN KEY (`Empleados_id_Empleado`)
     REFERENCES `IngSoft_II`.`Empleados` (`id_Empleado`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IngSoft_II`.`Estudios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Estudios` (
+  `id_Estudio` INT NOT NULL AUTO_INCREMENT,
+  `Nivel_Acad` CHAR NOT NULL,
+  `Titulo_Obt` VARCHAR(180) NULL,
+  `Mencion` VARCHAR(180) NULL,
+  `Estudio_2do_Nvl` VARCHAR(180) NULL,
+  `Empleados_id_Empleado` INT NOT NULL,
+  PRIMARY KEY (`id_Estudio`, `Empleados_id_Empleado`),
+  INDEX `fk_Estudio_Empleados1_idx` (`Empleados_id_Empleado` ASC),
+  CONSTRAINT `fk_Estudio_Empleados1`
+    FOREIGN KEY (`Empleados_id_Empleado`)
+    REFERENCES `IngSoft_II`.`Empleados` (`id_Empleado`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IngSoft_II`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Usuarios` (
+  `id_Usuario` INT NOT NULL AUTO_INCREMENT,
+  `Rol` VARCHAR(50) NOT NULL,
+  `Contraseña` VARCHAR(50) NOT NULL,
+  `Personas_id_Persona` INT NOT NULL,
+  PRIMARY KEY (`id_Usuario`, `Personas_id_Persona`),
+  INDEX `fk_Rol_Personas1_idx` (`Personas_id_Persona` ASC),
+  CONSTRAINT `fk_Rol_Personas1`
+    FOREIGN KEY (`Personas_id_Persona`)
+    REFERENCES `IngSoft_II`.`Personas` (`id_Persona`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `IngSoft_II`.`Informes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `IngSoft_II`.`Informes` (
+  `id_Informe` INT NOT NULL AUTO_INCREMENT,
+  `Cert_Salud` VARCHAR(45) NULL,
+  `Tarjeta_Vac` VARCHAR(45) NULL,
+  `Personas_id_Persona` INT NOT NULL,
+  PRIMARY KEY (`id_Informe`, `Personas_id_Persona`),
+  INDEX `fk_Informe_Personas1_idx` (`Personas_id_Persona` ASC),
+  CONSTRAINT `fk_Informe_Personas1`
+    FOREIGN KEY (`Personas_id_Persona`)
+    REFERENCES `IngSoft_II`.`Personas` (`id_Persona`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
