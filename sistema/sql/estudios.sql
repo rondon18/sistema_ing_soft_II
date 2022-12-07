@@ -1,0 +1,22 @@
+-- ESTUDIOS
+INSERT IGNORE INTO estudios (id_Estudio, Nivel_Acad, Titulo_Obt, Mencion, Estudio_2do_Nvl, Empleados_id_Empleado) VALUES
+(1, 0, 'Internal Auditor', 'Biostatistician IV', 'Senior Editor', 1),
+(2, 3, 'Senior Sales Associate', 'Recruiter', 'Junior Executive', 2),
+(3, 2, 'Graphic Designer', 'General Manager', 'Web Developer IV', 3),
+(4, 1, 'Clinical Specialist', 'Systems Administrator II', 'Marketing Manager', 4),
+(5, 2, 'Payment Adjustment Coordinator', 'Database Administrator IV', 'Director of Sales', 5),
+(6, 1, 'Geologist II', 'Media Manager IV', 'Paralegal', 6),
+(7, 3, 'Database Administrator I', 'VP Product Management', 'Pharmacist', 7),
+(8, 2, 'Executive Secretary', 'Technical Writer', 'Analog Circuit Design manager', 8),
+(9, 1, 'Database Administrator II', 'Assistant Media Planner', 'Human Resources Assistant II', 9),
+(10, 1, 'Budget/Accounting Analyst III', 'Software Consultant', 'Design Engineer', 10),
+(11, 1, 'Financial Analyst', 'Accountant II', 'Dental Hygienist', 11),
+(12, 2, 'Business Systems Development Analyst', 'Civil Engineer', 'Staff Accountant I', 12),
+(13, 1, 'Programmer Analyst III', 'Legal Assistant', 'Financial Analyst', 13),
+(14, 2, 'Actuary', 'Environmental Tech', 'Staff Scientist', 14),
+(15, 1, 'Nuclear Power Engineer', 'Operator', 'Speech Pathologist', 15),
+(16, 0, 'Accountant I', 'Teacher', 'Biostatistician III', 16),
+(17, 0, 'Graphic Designer', 'Media Manager IV', 'Executive Secretary', 17),
+(18, 0, 'Account Representative I', 'Quality Engineer', 'Safety Technician I', 18),
+(19, 1, 'Recruiter', 'Staff Scientist', 'Web Developer IV', 19),
+(20, 1, 'Executive Secretary', 'Database Administrator II', 'Technical Writer', 20);

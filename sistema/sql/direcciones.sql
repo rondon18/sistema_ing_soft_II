@@ -1,0 +1,22 @@
+-- DIRECCIONES
+INSERT IGNORE INTO direcciones (id_Direccion, Municipio, Parroquia, Direccion, Contactos_id_Contacto) VALUES 
+(1, 'Leiria', 'Casal Galego', '1 Sauthoff Terrace', 1),
+(2, 'Missouri', 'Jefferson City', '499 Bultman Circle', 2),
+(3, 'Missouri', 'Ben Arous', '494 Moulton Alley', 3),
+(4, 'Missouri', 'Guli', '8 Vernon Trail', 4),
+(5, 'Missouri', 'Madoi', '95 Fulton Plaza', 5),
+(6, 'Missouri', 'Cajuru', '38588 Miller Way', 6),
+(7, 'Missouri', 'Perniö', '899 Laurel Center', 7),
+(8, 'Missouri', 'Tarragona', '867 Menomonie Trail', 8),
+(9, 'Missouri', 'Jankovec', '334 Sherman Circle', 9),
+(10, 'Missouri', 'Zarasai', '8 Bartillon Trail', 10),
+(11, 'Missouri', 'Koceljeva', '1658 Anzinger Street', 11),
+(12, 'British Columbia', 'North Saanich', '3735 Westridge Center', 12),
+(13, 'Missouri', 'General Alvear', '3 Iowa Park', 13),
+(14, 'Missouri', 'Pantano do Sul', '454 Bultman Pass', 14),
+(15, 'Missouri', 'Shōbu', '17201 Old Gate Way', 15),
+(16, 'Missouri', 'Shambu', '9606 Elmside Point', 16),
+(17, 'Texas', 'Fort Worth', '57167 Marcy Hill', 17),
+(18, 'Halland', 'Halmstad', '09 Jackson Crossing', 18),
+(19, 'Missouri', 'Zárate', '744 Brown Parkway', 19),
+(20, 'Missouri', 'Borgarnes', '3211 Northridge Lane', 20);

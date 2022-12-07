@@ -1,0 +1,26 @@
+{
+  "name": "sistema_ing_soft_ii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "build": "npx tailwindcss -i ./src/input.css -o ./sistema/css/estilos.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rondon18/sistema_ing_soft_II.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rondon18/sistema_ing_soft_II/issues"
+  },
+  "homepage": "https://github.com/rondon18/sistema_ing_soft_II#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "tailwindcss": "^3.2.4"
+  }
+}

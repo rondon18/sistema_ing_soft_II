@@ -1,0 +1,22 @@
+-- INFORMES
+INSERT INTO informes (id_Informe, Cert_Salud, Tarjeta_Vac, Personas_id_Persona) VALUES 
+(1, 'Valido', 'Valido', 1),
+(2, 'Valido', 'No valido', 2),
+(3, 'Valido', 'Valido', 3),
+(4, 'No valido', 'No valido', 4),
+(5, 'Valido', 'Valido', 5),
+(6, 'No valido', 'No valido', 6),
+(7, 'Valido', 'No valido', 7),
+(8, 'Valido', 'No valido', 8),
+(9, 'No valido', 'No valido', 9),
+(10, 'Valido', 'No valido', 10),
+(11, 'No valido', 'No valido', 11),
+(12, 'Valido', 'No valido', 12),
+(13, 'No valido', 'Valido', 13),
+(14, 'No valido', 'Valido', 14),
+(15, 'No valido', 'Valido', 15),
+(16, 'Valido', 'No valido', 16),
+(17, 'Valido', 'No valido', 17),
+(18, 'No valido', 'No valido', 18),
+(19, 'Valido', 'No valido', 19),
+(20, 'Valido', 'Valido', 20);
