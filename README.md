@@ -1,5 +1,7 @@
 ![Logo del sistema](https://github.com/rondon18/sistema_ing_soft_II/blob/main/sistema/img/sisno-18.png)
 
+<img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/rondon18/sistema_ing_soft_II/blob/main/sistema/img/sisno-18.png">
+
 # Sistema para la UC Ingeniería del software II
 
 Simula un sistema de nómina para una institución educativa. 
