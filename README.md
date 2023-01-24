@@ -1,8 +1,5 @@
 
-<img 
-	alt="Logo del sistema" 
-	src="https://github.com/rondon18/sistema_ing_soft_II/blob/main/sistema/img/sisno-18.png"
-	style="max-width: 300px;"
+<img alt="Logo del sistema" src="https://github.com/rondon18/sistema_ing_soft_II/blob/main/sistema/img/sisno-18.png" style="max-width: 300px;"
 >
 
 # Sistema para la UC Ingeniería del software II
