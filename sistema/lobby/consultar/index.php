@@ -1,38 +1,45 @@
 <?php 
-if (isset($_GET['con'])) {
-	if ($_GET['con'] == "obr") {
-		$con = 0;
-		$title = "obreros";
+	session_start();
+
+	if (!$_SESSION['login']) {
+		header('Location: ../index.php');
+		exit();
 	}
-	elseif ($_GET['con'] == "doc") {
-		$con = 1;
-		$title = "docentes";
-	}
-	elseif ($_GET['con'] == "adm") {
-		$con = 2;
-		$title = "personal administrativo";
-	}
-	elseif ($_GET['con'] == "usu") {
-		$con = 3;
-		$title = "usuarios";
-	}
-	elseif ($_GET['con'] == "per") {
-		$con = 4;
-		$title = "personal";
-	}
-	elseif ($_GET['con'] == "emp" and isset($_POST['id_Persona'],$_POST['tipo_empleado'])) {
-		$con = 5;
-		$title = "empleado";
+	
+	if (isset($_GET['con'])) {
+		if ($_GET['con'] == "obr") {
+			$con = 0;
+			$title = "obreros";
+		}
+		elseif ($_GET['con'] == "doc") {
+			$con = 1;
+			$title = "docentes";
+		}
+		elseif ($_GET['con'] == "adm") {
+			$con = 2;
+			$title = "personal administrativo";
+		}
+		elseif ($_GET['con'] == "usu") {
+			$con = 3;
+			$title = "usuarios";
+		}
+		elseif ($_GET['con'] == "per") {
+			$con = 4;
+			$title = "personal";
+		}
+		elseif ($_GET['con'] == "emp" and isset($_POST['id_Persona'],$_POST['tipo_empleado'])) {
+			$con = 5;
+			$title = "empleado";
+		}
+		else {
+			$con = 4;
+			$title = "personal";
+		}
 	}
 	else {
 		$con = 4;
 		$title = "personal";
 	}
-}
-else {
-	$con = 4;
-	$title = "personal";
-}
  ?>
 
 <!DOCTYPE html>
@@ -77,6 +84,8 @@ else {
 						</svg>
 						<span>Personal</span>
 					</a>
+					<?php if ($_SESSION['datos_login']['Rol'] == 'Administrador'): ?>
+
 					<a class="item-navbar <?php if($con==3) {echo "active";}?>" href="index.php?con=usu">
 						<svg class="w-6 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
 						  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -89,7 +98,8 @@ else {
 						</svg>
 						<span>Base de datos</span>
 					</a>
-					<a class="item-navbar" href="#">
+				<?php endif; ?>
+					<a class="item-navbar" href="../../controladores/logout.php">
 						<svg class="w-6 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
 						  <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
 						</svg>

@@ -1,16 +1,25 @@
 <?php 
 
-require ('../controladores/conexion.php'); 
-$con = conectar();
-$bd_funciona = comprobar_bd($con);
+	session_start();
 
-require('../clases/empleado.php');
+	if (!$_SESSION['login']) {
+		header('Location: ../index.php');
+		exit();
+	}
 
-$emp = new Empleado();
+	// var_dump($_SESSION);
 
-require('../clases/usuario.php');
+	require ('../controladores/conexion.php'); 
+	$con = conectar();
+	$bd_funciona = comprobar_bd($con);
 
-$usu = new Usuario();
+	require('../clases/empleado.php');
+
+	$emp = new Empleado();
+
+	require('../clases/usuario.php');
+
+	$usu = new Usuario();
 
  ?>
 
@@ -56,6 +65,7 @@ $usu = new Usuario();
 						</svg>
 						<span>Personal</span>
 					</a>
+					<?php if ($_SESSION['datos_login']['Rol'] == 'Administrador'): ?>
 					<a class="item-navbar" href="consultar/index.php?con=usu">
 						<svg class="w-6 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
 						  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -68,7 +78,8 @@ $usu = new Usuario();
 						</svg>
 						<span>Base de datos</span>
 					</a>
-					<a class="item-navbar" href="#">
+					<?php endif ?>
+					<a class="item-navbar" href="../controladores/logout.php">
 						<svg class="w-6 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
 						  <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
 						</svg>
@@ -101,10 +112,11 @@ $usu = new Usuario();
 								</p>
 								<p class="p-2 px-4 border-b border-oxford-blue">
 									Empleados en nómina: 
-									<?php echo $emp->contarEmpleados();?></php>
+									<?php echo $emp->contarEmpleados();?>
 								</p>
 							</div>
 						</a>
+						<?php if ($_SESSION['datos_login']['Rol'] == 'Administrador'): ?>
 						<a class="m-3" href="consultar/index.php?con=usu">
 							<div class="cartilla-menu">
 								<p class="p-2 font-semibold text-xl bg-indigo-dye text-white text-center">
@@ -115,7 +127,7 @@ $usu = new Usuario();
 								</p>
 								<p class="p-2 px-4 border-b border-oxford-blue">
 									Usuarios registrados: 
-									<?php echo $usu->contarUsuarios(); ?></php>
+									<?php echo $usu->contarUsuarios(); ?>
 								</p>
 							</div>
 						</a>
@@ -149,6 +161,7 @@ $usu = new Usuario();
 								</p>
 							</div>
 						</a>
+						<?php endif ?>
 					</div>
 				</div>
 				

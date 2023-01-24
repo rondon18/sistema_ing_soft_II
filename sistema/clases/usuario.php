@@ -1,6 +1,6 @@
-<?php  
+<?php
 
-class Usuario {
+class Usuario extends Persona {
 
 	private $id_Usuario;
 	private $Rol;
@@ -55,14 +55,44 @@ class Usuario {
 		desconectar($conexion);
 	}
 
+	public function chequeo_login() {
+		$conexion = conectar();
+
+		$cedula = $this->getCedula();
+		$contraseña = $this->getContraseña();
+
+		$sql = "SELECT * FROM personas, usuarios WHERE personas.id_Persona = usuarios.Personas_id_Persona and personas.cedula = '$cedula' AND usuarios.contraseña = '$contraseña'; ";
+
+		$consulta_usuario = $conexion->query($sql) or die("error: ".$conexion->error);
+		$usuario = $consulta_usuario->fetch_assoc();
+
+		desconectar($conexion);
+
+		return $usuario;
+	}
+
 	public function consultar($id_Empleado) {
 		$conexion = conectar();
 
-		$sql = "SELECT * FROM `estudios` WHERE `Empleados_id_Empleado`='$id_Empleado';";
+		$sql = "SELECT * FROM `personas`,`usuarios` WHERE `id_Persona` and `Personas_id_Persona`;";
 
 		$fetch = $conexion->query($sql);
 
 		$resultado = $fetch->fetch_assoc();
+
+		desconectar($conexion);
+		
+		return $resultado;
+	}
+	
+	public function mostrar() {
+		$conexion = conectar();
+
+		$sql = "SELECT * FROM `personas`,`usuarios` WHERE `personas`.`id_Persona` = `usuarios`.`Personas_id_Persona`;";
+
+		$fetch = $conexion->query($sql);
+
+		$resultado = $fetch->fetch_all(MYSQLI_ASSOC);
 
 		desconectar($conexion);
 		

@@ -40,6 +40,9 @@ $con->query($sql);
 $sql = file_get_contents("../sql/informes.sql");
 $con->query($sql);
 
+$sql = file_get_contents("../sql/usuarios.sql");
+$con->query($sql);
+
 header('Location: ../lobby/index.php?BD_RESTAURADA');
 
 

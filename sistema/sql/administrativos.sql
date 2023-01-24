@@ -1,11 +1,9 @@
--- ADMINISTRATIVOS
-
-INSERT IGNORE INTO `administrativos`(`id_Administrativo`, `id_Empleado`) VALUES 
-(1,13),
-(2,14),
-(3,15),
-(4,16),
-(5,17),
-(6,18),
-(7,19),
-(8,20);
+insert into `administrativos`(`id_administrativo`, `id_empleado`) values 
+	(NULL,13),
+	(NULL,14),
+	(NULL,15),
+	(NULL,16),
+	(NULL,17),
+	(NULL,18),
+	(NULL,19),
+	(NULL,20);

@@ -73,7 +73,7 @@
 }
 
 label.error {
-	@apply block w-full text-red-500 text-sm !important;
+	@apply block w-full text-red-500 text-xs !important;
 }
 
 .form-label {

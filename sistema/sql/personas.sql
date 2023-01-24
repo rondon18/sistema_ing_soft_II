@@ -1,6 +1,8 @@
 -- PERSONAS
 
 INSERT IGNORE INTO `personas` (id_Persona, Nombre, Apellido, Cedula, Fecha_Nac, Ruta_Imagen,Sexo) VALUES 
+(99, 'Elber', 'Rondón', 'V27919566', '2001-05-05', 'V27919566.jpg','M'),
+(100, 'user', 'user', 'V11111111', '', 'V11111111.jpg','M'),
 (1, 'Morganica', 'Lawty', 'V12649473', '2022-4-14', 'V12649473.jpg','M'),
 (2, 'Edythe', 'Rigney', 'V13415496', '2022-1-16', 'V13415496.jpg','M'),
 (3, 'Berne', 'Pavlenkov', 'V84769533', '2022-8-9', 'V84769533.jpg','F'),
