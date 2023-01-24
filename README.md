@@ -1,4 +1,3 @@
-![Logo del sistema](https://github.com/rondon18/sistema_ing_soft_II/blob/main/sistema/img/sisno-18.png)
 
 <img 
 	alt="Logo del sistema" 
