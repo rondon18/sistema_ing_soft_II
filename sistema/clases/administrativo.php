@@ -1,115 +1,121 @@
 <?php  
-require('empleado.php');
 
-class Administrativo extends Empleado {
-	private $id_Administrativo; 	
+	require('empleado.php');
 
-	public function __construct(){}
+	// Hereda atributos de la clase empleado
 
-	public function insertarAdministrativo() {
+	class Administrativo extends Empleado {
+		private $id_Administrativo; 	
 
-		$this->insertarPersona();
-		$this->insertarEmpleado();
+		public function __construct(){}
 
-		$conexion = conectar();
+		// Inserta un empleado administrativo
+		public function insertarAdministrativo() {
 
-		$id_Empleado = $this->getid_Empleado();
+			$this->insertarPersona();
+			$this->insertarEmpleado();
 
-		$sql = "
-			INSERT IGNORE INTO `administrativos` 
-			(
-				`id_Administrativo`, 
-				`id_Empleado`
-			)
-			VALUES 
-			(
-				NULL,
-				'$id_Empleado'
-			);
-		";
-		
-		$conexion->query($sql) or die("error: ".$conexion->error);
-		$this->setid_Administrativo($conexion->insert_id);
+			$conexion = conectar();
 
-		desconectar($conexion);
-	}
+			$id_Empleado = $this->getid_Empleado();
 
-	public function editarAdministrativo() {
+			$sql = "
+				INSERT IGNORE INTO `administrativos` 
+				(
+					`id_Administrativo`, 
+					`id_Empleado`
+				)
+				VALUES 
+				(
+					NULL,
+					'$id_Empleado'
+				);
+			";
+			
+			$conexion->query($sql) or die("error: ".$conexion->error);
+			$this->setid_Administrativo($conexion->insert_id);
 
-		$this->editarPersona();
-		$this->editarEmpleado();
-
-		$conexion = conectar();
-		// Aún no hay campos exclusivos de administrativos
-		// $sql = "
-		// 	UPDATE 
-		// 		`docentes` 
-		// 	SET 
-		// 		`Hrs_Academicas`='$Hrs_Academicas',
-		// 		`Area`='$Area'
-		// 	WHERE 
-		// 		`id_Empleado`='$id_Empleado' 
-		// ";
-		
-		// $conexion->query($sql) or die("error: ".$conexion->error);
-		desconectar($conexion);
-	}
-
-	public function mostrar(){
-		$conexion = conectar();
-
-		$sql = "
-		SELECT * FROM `personas`,`empleados`,`administrativos` 
-		WHERE 
-			`personas`.`id_Persona` = `empleados`.`id_Personas` 
-		AND
-			`empleados`.`id_Empleado` = `administrativos`.`id_Empleado` 
-		;";
-
-		$fetch = $conexion->query($sql);
-
-		$resultados = $fetch->fetch_all(MYSQLI_ASSOC);
-
-		$administrativos = [];
-		foreach ($resultados as $administrativo) {
-			$administrativos[] = $administrativo;
+			desconectar($conexion);
 		}
 
-		desconectar($conexion);
+		// Edita un empleado administrativo en especifico
+		public function editarAdministrativo() {
+
+			$this->editarPersona();
+			$this->editarEmpleado();
+
+			$conexion = conectar();
+			// Aún no hay campos exclusivos de administrativos
+			// $sql = "
+			// 	UPDATE 
+			// 		`docentes` 
+			// 	SET 
+			// 		`Hrs_Academicas`='$Hrs_Academicas',
+			// 		`Area`='$Area'
+			// 	WHERE 
+			// 		`id_Empleado`='$id_Empleado' 
+			// ";
+			
+			// $conexion->query($sql) or die("error: ".$conexion->error);
+			desconectar($conexion);
+		}
+
 		
-		return $administrativos;
-	}	
+		// Retorna una lista con todos los empleados que sean administrativos
+		public function mostrar(){
+			$conexion = conectar();
 
-	public function consultar($id_Persona) {
-		$conexion = conectar();
+			$sql = "
+			SELECT * FROM `personas`,`empleados`,`administrativos` 
+			WHERE 
+				`personas`.`id_Persona` = `empleados`.`id_Personas` 
+			AND
+				`empleados`.`id_Empleado` = `administrativos`.`id_Empleado` 
+			;";
 
-		$sql = "
-		SELECT * FROM `personas`,`empleados`,`administrativos` 
-		WHERE 
-			`personas`.`id_Persona` =  '$id_Persona'
-		AND
-			`empleados`.`id_Personas` = '$id_Persona'
-		AND
-			`empleados`.`id_Empleado` = `administrativos`.`id_Empleado` 
-		;";
+			$fetch = $conexion->query($sql);
 
-		$fetch = $conexion->query($sql);
+			$resultados = $fetch->fetch_all(MYSQLI_ASSOC);
 
-		$resultado = $fetch->fetch_assoc();
+			$administrativos = [];
+			foreach ($resultados as $administrativo) {
+				$administrativos[] = $administrativo;
+			}
 
-		desconectar($conexion);
+			desconectar($conexion);
+			
+			return $administrativos;
+		}	
 
-		return $resultado;
+		public function consultar($id_Persona) {
+			$conexion = conectar();
+
+			$sql = "
+			SELECT * FROM `personas`,`empleados`,`administrativos` 
+			WHERE 
+				`personas`.`id_Persona` =  '$id_Persona'
+			AND
+				`empleados`.`id_Personas` = '$id_Persona'
+			AND
+				`empleados`.`id_Empleado` = `administrativos`.`id_Empleado` 
+			;";
+
+			$fetch = $conexion->query($sql);
+
+			$resultado = $fetch->fetch_assoc();
+
+			desconectar($conexion);
+
+			return $resultado;
+		}
+		
+		public function getid_Administrativo() {
+			return $this->id_Administrativo;
+		}
+		
+		public function setid_Administrativo($id_Administrativo) {
+			$this->id_Administrativo = $id_Administrativo;
+		}
 	}
-	
-	public function getid_Administrativo() {
-		return $this->id_Administrativo;
-	}
-	
-	public function setid_Administrativo($id_Administrativo) {
-		$this->id_Administrativo = $id_Administrativo;
-	}
-}
-
 
 ?>

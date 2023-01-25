@@ -8,9 +8,9 @@
 Simula un sistema de nómina para una institución educativa. 
 El cual permite la gestión de personal, entre este personal obrero, docente y administrativo.
 
-## Caracteristicas del software
+## Características del software
 SISNO-18 cuenta con las siguientes funciones:
-1. Creación, consulta, edicion y eliminación de persona. (Obreros, Docentes y Administrativos).
+1. Creación, consulta, edición y eliminación de persona. (Obreros, Docentes y Administrativos).
 2. Sistema de usuarios con permisos. (Creación a gusto de nuevos usuarios no disponible actualmente).
 3. Generación de reportes de docentes en PDF y Excel.
 
@@ -30,11 +30,11 @@ Puede clonar el repositorio desde la terminal de git con el comando
 
 	git clone https://github.com/rondon18/sistema_ing_soft_II.git
 
-Bajo alguna duda con esto, vease [Ayuda de github](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)
+Bajo alguna duda con esto, véase [Ayuda de github](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)
 
 ## Despliegue
 
-Asegurese de que el servidor local y los puertos de apache y mysql se estén ejecutando correctamente.
+Asegúrese de que el servidor local y los puertos de apache y mysql se estén ejecutando correctamente.
 
 ## Desarrollado con:
 - HTML5, CSS3 y PHP 8.1 
