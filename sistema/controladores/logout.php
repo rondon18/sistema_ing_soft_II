@@ -1,6 +1,11 @@
 <?php
+	
+	session_start();
 
-	require("conexion.php");
+	if (!$_SESSION['login']) {
+		header('Location: ../index.php');
+		exit();
+	}
 
 	session_start();
 	

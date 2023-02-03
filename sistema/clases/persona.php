@@ -16,7 +16,6 @@ class Persona {
 	public function insertarPersona() {
 		$conexion = conectar();
 		
-
 		$Nombre = $this->getNombre();
 		$Apellido = $this->getApellido();
 		$Cedula = $this->getCedula();

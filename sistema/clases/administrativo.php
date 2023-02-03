@@ -5,6 +5,7 @@
 	// Hereda atributos de la clase empleado
 
 	class Administrativo extends Empleado {
+		
 		private $id_Administrativo; 	
 
 		public function __construct(){}
@@ -44,20 +45,10 @@
 			$this->editarPersona();
 			$this->editarEmpleado();
 
-			$conexion = conectar();
-			// Aún no hay campos exclusivos de administrativos
-			// $sql = "
-			// 	UPDATE 
-			// 		`docentes` 
-			// 	SET 
-			// 		`Hrs_Academicas`='$Hrs_Academicas',
-			// 		`Area`='$Area'
-			// 	WHERE 
-			// 		`id_Empleado`='$id_Empleado' 
-			// ";
+			// $conexion = conectar();
 			
 			// $conexion->query($sql) or die("error: ".$conexion->error);
-			desconectar($conexion);
+			// desconectar($conexion);
 		}
 
 		

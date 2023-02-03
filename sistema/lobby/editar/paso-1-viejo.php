@@ -1,49 +1,51 @@
 <?php 
-require('../../controladores/conexion.php');
-require('../../clases/calculos.php');
+	
+	require('../../controladores/conexion.php');
+	require('../../clases/calculos.php');
 
-require('../../clases/contacto.php');
-require('../../clases/telefono.php');
-require('../../clases/direccion.php');
-require('../../clases/informe.php');
-require('../../clases/estudio.php');
-require('../../clases/carga-horaria.php');
+	require('../../clases/contacto.php');
+	require('../../clases/telefono.php');
+	require('../../clases/direccion.php');
+	require('../../clases/informe.php');
+	require('../../clases/estudio.php');
+	require('../../clases/carga-horaria.php');
 
-if ($_POST['tipo_empleado'] == 1) {
-	include('../../clases/obrero.php');
-	$emp = new Obrero();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
-elseif ($_POST['tipo_empleado'] == 2) {
-	include('../../clases/docente.php');
-	$emp = new Docente();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
-elseif ($_POST['tipo_empleado'] == 3) {
-	include('../../clases/administrativo.php');
-	$emp = new Administrativo();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
-$con = new Contacto();
-$contacto = $con->consultar($_POST['id_Persona']);
+	if ($_POST['tipo_empleado'] == 1) {
+		include('../../clases/obrero.php');
+		$emp = new Obrero();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
+	elseif ($_POST['tipo_empleado'] == 2) {
+		include('../../clases/docente.php');
+		$emp = new Docente();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
+	elseif ($_POST['tipo_empleado'] == 3) {
+		include('../../clases/administrativo.php');
+		$emp = new Administrativo();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
+	$con = new Contacto();
+	$contacto = $con->consultar($_POST['id_Persona']);
 
-$tel = new Telefono();
-$telefonos = $tel->consultar($contacto['id_Contacto']);
+	$tel = new Telefono();
+	$telefonos = $tel->consultar($contacto['id_Contacto']);
 
-$dir = new Direccion();
-$direccion = $dir->consultar($contacto['id_Contacto']);
+	$dir = new Direccion();
+	$direccion = $dir->consultar($contacto['id_Contacto']);
 
-$inf = new Informe();
-$informe = $inf->consultar($_POST['id_Persona']);
+	$inf = new Informe();
+	$informe = $inf->consultar($_POST['id_Persona']);
 
-$est = new Estudio();
-$estudio = $est->consultar($empleado['id_Empleado']);
+	$est = new Estudio();
+	$estudio = $est->consultar($empleado['id_Empleado']);
 
-$ch = new Carga_Horaria();
-$carga = $ch->consultar($empleado['id_Empleado']);
+	$ch = new Carga_Horaria();
+	$carga = $ch->consultar($empleado['id_Empleado']);
 
 
-$calc = new Calculo();
+	$calc = new Calculo();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

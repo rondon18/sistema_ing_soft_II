@@ -1,49 +1,36 @@
-<?php  
+<?php
+  
+	require('conexion.php');
+	$con = conectar();
 
-require('conexion.php');
+	// Vacia la base de datos
+	$sql = 'DELETE FROM `personas`';
+	$con->query($sql);
 
-$con = conectar();
+	// Lista de archivos sql a importar
+	// Nota: deben importarse de manera ordenada
+	$archivos = [
+		'personas',
+		'empleados',
+		'obreros',
+		'docentes',
+		'administrativos',
+		'contactos',
+		'telefonos',
+		'direcciones',
+		'estudios',
+		'carga-horaria',
+		'informes',
+		'usuarios',
+	];
 
-$sql = 'DELETE FROM `personas`';
-$con->query($sql);
+	// Itera los archivos y los va ejecutando secuencialmente
+	foreach ($archivos as $sql) {
+		$instrucciones = file_get_contents("../sql/".$sql.".sql");
+		$con->query($instrucciones);
+	}
 
-$sql = file_get_contents("../sql/personas.sql");
-$con->query($sql);
+	desconectar($con);
 
-$sql = file_get_contents("../sql/empleados.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/obreros.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/docentes.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/administrativos.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/contactos.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/telefonos.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/direcciones.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/estudios.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/carga-horaria.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/informes.sql");
-$con->query($sql);
-
-$sql = file_get_contents("../sql/usuarios.sql");
-$con->query($sql);
-
-header('Location: ../lobby/index.php?BD_RESTAURADA');
-
-
+	header('Location: ../lobby/index.php?BD_RESTAURADA');
 ?>

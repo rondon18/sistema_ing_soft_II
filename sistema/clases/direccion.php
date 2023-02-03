@@ -33,7 +33,7 @@
 			";
 			
 			$conexion->query($sql) or die("error: ".$conexion->error);
-			$this->setContactos_id_Contacto($conexion->insert_id);
+			$this->setid_Direccion($conexion->insert_id);
 
 			desconectar($conexion);
 		}
