@@ -12,21 +12,7 @@ class Usuario extends Persona {
 	public function insertarUsuario() {
 		$conexion = conectar();
 
-		$Nivel_Acad = $this->getNivel_Acad();
-		$Titulo_Obt = $this->getTitulo_Obt();
-		$Mencion = $this->getMencion();
-		$Estudio_2do_Nv = $this->getEstudio_2do_Nv();
-		$Empleados_id_Empleado = $this->getEmpleados_id_Empleado();
-
-		$sql = "INSERT IGNORE INTO `estudios`(`id_Estudio`, `Nivel_Acad`, `Titulo_Obt`, `Mencion`, `Estudio_2do_Nvl`, `Empleados_id_Empleado`) 
-		VALUES (
-		NULL,
-		'$Nivel_Acad',
-		'$Titulo_Obt',
-		'$Mencion',
-		'$Estudio_2do_Nv',
-		'$Empleados_id_Empleado'
-		)";
+		// METODO NO IMPLEMENTADO
 		
 		$conexion->query($sql) or die("error: ".$conexion->error);
 		$this->setid_Contacto($conexion->insert_id);
@@ -37,19 +23,7 @@ class Usuario extends Persona {
 	public function editarUsuario() {
 		$conexion = conectar();
 
-		$Nivel_Acad = $this->getNivel_Acad();
-		$Titulo_Obt = $this->getTitulo_Obt();
-		$Mencion = $this->getMencion();
-		$Estudio_2do_Nv = $this->getEstudio_2do_Nv();
-		$Empleados_id_Empleado = $this->getEmpleados_id_Empleado();
-
-		$sql = "UPDATE `estudios` SET 
-		`Nivel_Acad`='$Nivel_Acad',
-		`Titulo_Obt`='$Titulo_Obt',
-		`Mencion`='$Mencion',
-		`Estudio_2do_Nvl`='$Estudio_2do_Nv'
-		WHERE 
-		`Empleados_id_Empleado`='$Empleados_id_Empleado'";
+		// METODO NO IMPLEMENTADO
 
 		$conexion->query($sql) or die("error: ".$conexion->error);
 		desconectar($conexion);
