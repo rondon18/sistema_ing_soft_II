@@ -32,6 +32,11 @@ Puede clonar el repositorio desde la terminal de git con el comando
 
 Bajo alguna duda con esto, véase [Ayuda de github](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)
 
+- Cree una base de datos con el nombre ingsoft_ii
+- Importe en esa base de datos el archivo IngSoftII.sql
+- Inicie sesión con uno de los dos usuarios registrados.
+- Use el boton Gestionar BD si desea cargar registros de prueba.
+
 ## Despliegue
 
 Asegúrese de que el servidor local y los puertos de apache y mysql se estén ejecutando correctamente.
