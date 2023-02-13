@@ -97,7 +97,8 @@
 				<div class="max-h-96 overflow-y-auto p-6">
 					<div class="border-b mb-4 py-3">
 						<p class="text-xl text-center bg-gradient-to-r from-indigo-dye via-cg-blue to-indigo-dye bg-clip-text">
-							Bienvenido al sistema, Nombre de usuario.
+							Bienvenido al sistema,
+							<?php echo $_SESSION['datos_login']['Nombre']." ".$_SESSION['datos_login']['Apellido'];?>.
 						</p>
 					</div>
 

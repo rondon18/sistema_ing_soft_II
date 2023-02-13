@@ -1,20 +1,17 @@
 <?php 
 
-require('../../controladores/conexion.php');
-require('../../clases/persona.php');
-require('../../clases/usuario.php');
-require('../../clases/calculos.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/persona.php');
+	require('../../clases/usuario.php');
+	require('../../clases/calculos.php');
 
-$usu = new Usuario();
-$calc = new Calculo();
+	$usu = new Usuario();
+	$calc = new Calculo();
 
-$lista_usuario = $usu->mostrar();
-
-// var_dump($lista_usuario);
-
+	$lista_usuario = $usu->mostrar();
 ?>
-<?php if ($_SESSION['datos_login']['Rol'] == 'Administrador'): ?>
-		
+
+<?php if ($_SESSION['datos_login']['Rol'] == 'Administrador'): ?>	
 	<p class="text-xl text-center font-semibold mt-5 mb-3">Consulta de usuarios.</p>
 
 	<!-- <a class="boton mb-2" href="../registrar/paso-1.php">
@@ -46,6 +43,5 @@ $lista_usuario = $usu->mostrar();
 			<?php endforeach ?>
 		</tbody>
 	</table>
-
 <?php endif ?>
 

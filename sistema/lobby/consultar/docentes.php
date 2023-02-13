@@ -1,13 +1,13 @@
 <?php 
 
-require('../../controladores/conexion.php');
-require('../../clases/docente.php');
-require('../../clases/calculos.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/docente.php');
+	require('../../clases/calculos.php');
 
-$doc = new Docente();
-$calc = new Calculo();
+	$doc = new Docente();
+	$calc = new Calculo();
 
-$lista_doc = $doc->mostrar();
+	$lista_doc = $doc->mostrar();
 
 ?>
 

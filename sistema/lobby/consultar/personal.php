@@ -1,13 +1,13 @@
 <?php 
 
-require('../../controladores/conexion.php');
-require('../../clases/empleado.php');
-require('../../clases/calculos.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/empleado.php');
+	require('../../clases/calculos.php');
 
-$emp = new Empleado();
-$calc = new Calculo();
+	$emp = new Empleado();
+	$calc = new Calculo();
 
-$lista_personal = $emp->mostrar();
+	$lista_personal = $emp->mostrar();
 
 ?>
 

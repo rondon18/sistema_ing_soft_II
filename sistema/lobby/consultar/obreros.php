@@ -1,13 +1,13 @@
 <?php 
 
-require('../../controladores/conexion.php');
-require('../../clases/calculos.php');
-require('../../clases/obrero.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/calculos.php');
+	require('../../clases/obrero.php');
 
-$ob = new Obrero();
-$calc = new Calculo();
+	$ob = new Obrero();
+	$calc = new Calculo();
 
-$lista_ob = $ob->mostrar();
+	$lista_ob = $ob->mostrar();
 
 ?>
 

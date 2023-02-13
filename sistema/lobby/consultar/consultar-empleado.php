@@ -1,51 +1,51 @@
 <?php 
 
-require('../../controladores/conexion.php');
-require('../../clases/calculos.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/calculos.php');
 
-require('../../clases/contacto.php');
-require('../../clases/telefono.php');
-require('../../clases/direccion.php');
-require('../../clases/informe.php');
-require('../../clases/estudio.php');
-require('../../clases/carga-horaria.php');
+	require('../../clases/contacto.php');
+	require('../../clases/telefono.php');
+	require('../../clases/direccion.php');
+	require('../../clases/informe.php');
+	require('../../clases/estudio.php');
+	require('../../clases/carga-horaria.php');
 
-if ($_POST['tipo_empleado'] == 0) {
-	include('../../clases/obrero.php');
-	$emp = new Obrero();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
-elseif ($_POST['tipo_empleado'] == 1) {
-	include('../../clases/docente.php');
-	$emp = new Docente();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
-elseif ($_POST['tipo_empleado'] == 2) {
-	include('../../clases/administrativo.php');
-	$emp = new Administrativo();
-	$empleado = $emp->consultar($_POST['id_Persona']);
-}
+	if ($_POST['tipo_empleado'] == 0) {
+		include('../../clases/obrero.php');
+		$emp = new Obrero();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
+	elseif ($_POST['tipo_empleado'] == 1) {
+		include('../../clases/docente.php');
+		$emp = new Docente();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
+	elseif ($_POST['tipo_empleado'] == 2) {
+		include('../../clases/administrativo.php');
+		$emp = new Administrativo();
+		$empleado = $emp->consultar($_POST['id_Persona']);
+	}
 
-$con = new Contacto();
-$contacto = $con->consultar($_POST['id_Persona']);
+	$con = new Contacto();
+	$contacto = $con->consultar($_POST['id_Persona']);
 
-$tel = new Telefono();
-$telefonos = $tel->consultar($contacto['id_Contacto']);
+	$tel = new Telefono();
+	$telefonos = $tel->consultar($contacto['id_Contacto']);
 
-$dir = new Direccion();
-$direccion = $dir->consultar($contacto['id_Contacto']);
+	$dir = new Direccion();
+	$direccion = $dir->consultar($contacto['id_Contacto']);
 
-$inf = new Informe();
-$informe = $inf->consultar($_POST['id_Persona']);
+	$inf = new Informe();
+	$informe = $inf->consultar($_POST['id_Persona']);
 
-$est = new Estudio();
-$estudio = $est->consultar($empleado['id_Empleado']);
+	$est = new Estudio();
+	$estudio = $est->consultar($empleado['id_Empleado']);
 
-$ch = new Carga_Horaria();
-$carga = $ch->consultar($empleado['id_Empleado']);
+	$ch = new Carga_Horaria();
+	$carga = $ch->consultar($empleado['id_Empleado']);
 
 
-$calc = new Calculo();
+	$calc = new Calculo();
 
 ?>
 <div class="w-2/3 border-2 border-indigo-dye mx-auto mt-5 rounded-2xl p-4">
@@ -226,31 +226,31 @@ $calc = new Calculo();
 			</p>
 		</div>
 		<?php if ($_POST['tipo_empleado'] == 0): ?>
-		<div class="p-2 px-5">
-			<p>
-				<span class="font-semibold">
-					Rol de obrero
-				</span>			
-				<?php echo $empleado['Rol']; ?>
-			</p>
-		</div>
+			<div class="p-2 px-5">
+				<p>
+					<span class="font-semibold">
+						Rol de obrero
+					</span>			
+					<?php echo $empleado['Rol']; ?>
+				</p>
+			</div>
 		<?php elseif ($_POST['tipo_empleado'] == 1): ?>
-		<div class="p-2 px-5">
-			<p>
-				<span class="font-semibold">
-					Horas de clase semanales
-				</span>			
-				<?php echo $empleado['Horas_Clase_S']; ?>
-			</p>
-		</div>
-		<div class="p-2 px-5">
-			<p>
-				<span class="font-semibold">
-					Área
-				</span>			
-				<?php echo $empleado['Area']; ?>
-			</p>
-		</div>
+			<div class="p-2 px-5">
+				<p>
+					<span class="font-semibold">
+						Horas de clase semanales
+					</span>			
+					<?php echo $empleado['Horas_Clase_S']; ?>
+				</p>
+			</div>
+			<div class="p-2 px-5">
+				<p>
+					<span class="font-semibold">
+						Área
+					</span>			
+					<?php echo $empleado['Area']; ?>
+				</p>
+			</div>
 		<?php elseif ($_POST['tipo_empleado'] == 2): ?>
 		<?php endif;?>
 	</div>
@@ -267,11 +267,4 @@ $calc = new Calculo();
 		<button class="boton" type="submit">Eliminar</button>
 	</form>
 </div>
-	<tr>
-		<td>
-		</td>
-		<td>
-		</td>
-		<td></td>
-	</tr>
 </table>

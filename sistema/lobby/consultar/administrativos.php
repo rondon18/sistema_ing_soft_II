@@ -1,13 +1,13 @@
 <?php  
-require('../../controladores/conexion.php');
-require('../../clases/administrativo.php');
-require('../../clases/calculos.php');
+	require('../../controladores/conexion.php');
+	require('../../clases/administrativo.php');
+	require('../../clases/calculos.php');
 
-$calc = new Calculo();
+	$calc = new Calculo();
 
-$adm = new Administrativo();
+	$adm = new Administrativo();
 
-$lista_adm = $adm->mostrar();
+	$lista_adm = $adm->mostrar();
 ?>
 
 <p class="text-xl text-center font-semibold mt-5 mb-3">Consulta de personal administrativo.</p>
